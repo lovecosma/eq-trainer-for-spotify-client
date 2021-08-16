@@ -19,10 +19,10 @@ function usersReducer(state = { isLoggedIn: false, user: {},  requesting: true, 
         let grid = []
         let counter = 0
         while(counter < 8){
-            carousel.push(action.tracks[counter++])
+            carousel.push(action.albums[counter++])
         }
         while(counter < 17){
-            grid.push(action.tracks[counter++])
+            grid.push(action.albums[counter++])
         }
         return {
             ...state,
