@@ -12,7 +12,7 @@ export class LoginSuccess extends Component {
     render() {
         if(this.props.usersReducer.requesting){
             return (
-                <div>
+                <div >
                     <Loading/>
                 </div>
     

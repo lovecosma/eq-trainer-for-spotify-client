@@ -19,7 +19,6 @@ export class Home extends Component {
     }
  
     render() {
-        console.log(this.props);
         if(this.props.requesting){
             return <h1>Loading</h1>
         } else {
@@ -27,9 +26,6 @@ export class Home extends Component {
             return (
                 
                 <div>
-                    <div>
-                       <Nav/>
-                    </div>
                         <section className="float-container gradient ">
                         <h3 className="center">Get better with Spotify.</h3>
                             <div className="float-child flow-text">
