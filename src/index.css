@@ -1,0 +1,98 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.gradient{
+    background: rgb(0,181,21);
+    background: linear-gradient(0deg, rgba(0,181,21,1) 0%, rgba(0,0,0,1) 100%);
+}
+.gradient2{
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,181,21,1) 100%);
+}
+    #btn{ 
+        background-color: black;
+        border: solid white;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 16px;
+        width: 175px;  
+        height: 75px;  
+    }  
+
+    .pill_containter{
+        padding: 25%;
+        border: solid white;
+    }
+
+    .pill {
+        background-color: black;
+        border: solid white;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 16px;
+        width: 100%
+    }
+
+
+    .float-container {
+        padding: 50px;
+        overflow:hidden
+    }
+
+    .float-container2 {
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,181,21,1) 100%);
+    }
+    
+    
+    .float-child {
+        float: left;
+        width: 40%;
+        padding: 20px;
+        font-size: xx-large;
+        margin-left: 100px;
+        margin-top: 50px;
+
+    } 
+    .float-child2 {
+        float: left;
+        width: 40%;
+        padding: 20px;
+        font-size: xx-large;
+        margin-top: 50px;
+    } 
+   
+    .carousel{
+        padding: 20px;
+    }
+    .carousel .carousel-item {
+        width:300px !important;
+    }
+
+    .game-board {
+        display: grid;
+        grid-template-rows: 200px 200px 200px;
+        grid-template-columns: 200px 200px 200px;
+    }
+    
+    .grid-container {
+        display: flex;
+        justify-content: center;
+    }
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
