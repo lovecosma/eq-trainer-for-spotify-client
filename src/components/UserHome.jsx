@@ -10,13 +10,13 @@ export class UserHome extends Component {
      
 
     componentDidMount(){
-            this.props.getUserInfo(this.props.user.id)
+            this.props.getUserInfo(this.props.location.state.user.id)
        }
 
    
     render() {
         if(this.props.requesting){
-           return <div><Loading/></div> 
+           return <div></div> 
         }else {
       
         //   if(this.props.user.id){

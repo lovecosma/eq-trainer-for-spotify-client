@@ -1,4 +1,4 @@
-function usersReducer(state = { isLoggedIn: false, user: {},  requesting: true, token: "", carousel: [], grid: []} , action) {
+function usersReducer(state = { loggedIn: false, user: {},  requesting: true, token: "", carousel: [], grid: []} , action) {
     switch (action.type) {
 
     case 'START_ADDING_USER_REQUEST':
@@ -13,39 +13,18 @@ function usersReducer(state = { isLoggedIn: false, user: {},  requesting: true, 
             requesting: true
         }
 
-    case "START_REQUESTING_TOP_TRACK_ART":
-        return {
-            ...state,
-            requesting: true
-        }
-
-    case 'ADD_TRACK_ART':
-        let carousel = []
-        let grid = []
-        let counter = 0
-        while(counter < 8){
-            carousel.push(action.albums[counter++])
-        }
-        while(counter < 17){
-            grid.push(action.albums[counter++])
-        }
-        return {
-            ...state,
-            carousel: [...carousel],
-            grid: [...grid],
-            requesting: false
-        }
-
     case 'LOGIN':
+        // console.log(action.user);
+        // debugger
         return {
-            isLoggedIn: true,
+            loggedIn: true,
             user: {...action.user},
             requesting: false
-    }
-
-    case 'LOGOUT':
+        }
+        
+        case 'LOGOUT':
         return {
-            isLoggedIn: false,
+            loggedIn: false,
             user: {},
             requesting: false
     } 

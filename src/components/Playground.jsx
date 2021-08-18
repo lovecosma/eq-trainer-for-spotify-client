@@ -26,7 +26,7 @@ export class Playground extends Component {
                         {this.props.tracks[0].name}
                     </h1>
                     <h1>
-                        {this.props.tracks[0].album_art}
+                        <img src={this.props.tracks[0].album_art} width="200px" height="200px"/>
                     </h1>
                 </div>
             )

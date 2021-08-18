@@ -27,23 +27,23 @@ import mixer from "../mixer.jpeg"
                 <div className="background">
                     <img width="300px" height="200px" src={mixer}/> 
                 </div>
-                {this.props.user.id ? <a href="#user"><img className="circle" style={{height: "125px", width: "100px"}} src={this.props.user.image_url}/></a> : <div></div>}
+                {this.props.user.id ? <NavLink to="/"><img className="circle" style={{height: "125px", width: "100px"}} src={this.props.user.image_url}/> </NavLink> : <div></div>}
                 <h5>{this.props.user.display_name}</h5>
                 </div></li>
-                <li><a href="#!"><i className="material-icons">cloud</i>First Link With Icon</a></li>
-                <li><a href="#!">Second Link</a></li>
+                <li><NavLink to="/"><i className="material-icons">cloud</i>First Link With Icon</NavLink></li>
+                <li><NavLink to="/">Second Link</NavLink></li>
                 <li><div className="divider"></div></li>
-                <li><a className="subheader">Subheader</a></li>
-                <li><a className="waves-effect" href="#!">Third Link With Waves</a></li>
+                <li><NavLink to="/" className="subheader">Subheader</NavLink></li>
+                <li><NavLink className="waves-effect" to="/">Third Link With Waves</NavLink></li>
             </ul>
-                    <span style={{padding: "15px"}}><a href="#" data-target="slide-out" className="sidenav-trigger"><img src="https://img.icons8.com/material-outlined/24/ffffff/menu--v1.png"/></a></span>
+                    <span style={{padding: "15px"}}><NavLink to="/" data-target="slide-out" className="sidenav-trigger"><img src="https://img.icons8.com/material-outlined/24/ffffff/menu--v1.png"/></NavLink></span>
                 <nav >
 
                     <div className="nav-wrapper black white-text">
 
-                    <a href="http://localhost:3000/" className="brand-logo"  style={{marginLeft:"20%"}}>EQ Trainer</a>
+                    <NavLink to="http://localhost:3000/" className="brand-logo"  style={{marginLeft:"20%"}}>EQ Trainer</NavLink>
                         <ul id="nav-mobile"  className="right hide-on-med-and-down"  style={{marginRight:"20%"}}>
-                           <NavLinks/>
+                           <NavLinks user={this.props.user}/>
                         </ul>
                     </div>
                 </nav>
@@ -60,7 +60,7 @@ import mixer from "../mixer.jpeg"
 }
 
 const mapStateToProps = ({usersReducer}) => {
-    return {
+return {
         user: usersReducer.user
     }
 }

@@ -8,11 +8,11 @@ import albums from "../db/albumArt.json"
 import doodle from '../assets/doodle.png'
 import M from 'materialize-css';
 import SideNav from "./SideNav"
+import {NavLink} from "react-router-dom"
+
 export class Home extends Component {
 
     componentDidMount(){
-        let elems = document.querySelectorAll('.carousel');
-        let instances = M.Carousel.init(elems, {});
         this.props.getTopTracksArt()
     }
     componentDidUpdate(){
@@ -21,7 +21,7 @@ export class Home extends Component {
     }
  
     render() {
-        if(this.props.requesting){
+        if(this.props.requestingTrackInfo){
             return <h1></h1>
         } else {
             return (
@@ -37,7 +37,7 @@ export class Home extends Component {
                         
       
                                 <div className="carousel" style={{width: "50%"}}>
-                                    {this.props.carousel.map(album => <a className="carousel-item" ><img src={album.image}/></a>)}
+                                    {this.props.carousel.map(album => <a href="/" className="carousel-item" ><img src={album.image}/></a>)}
                                 </div>
                             </div>
                         </section>
@@ -74,11 +74,11 @@ export class Home extends Component {
     }
 
 
-const mapStateToProps = ({usersReducer}) => {
+const mapStateToProps = ({tracksReducer}) => {
     return {
-        requesting: usersReducer.requesting,
-        grid: usersReducer.grid,
-        carousel: usersReducer.carousel
+        requestingTrackInfo: tracksReducer.requesting,
+        grid: tracksReducer.grid,
+        carousel: tracksReducer.carousel,
     }
 }
 

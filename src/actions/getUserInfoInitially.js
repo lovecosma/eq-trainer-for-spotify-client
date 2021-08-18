@@ -12,8 +12,6 @@ const getUserInfoInitially = (token, history) => {
         fetch("http://localhost:3001/get_info", config)
         .then(resp => resp.json())
         .then(user => {
-            dispatch({type: 'LOGIN', user, token}) 
-            localStorage.setItem("user", user)
             history.push("/success", {
                 user
             })
