@@ -7,12 +7,14 @@ import getTopTracksArt from "../actions/getTopTracksArt"
 import albums from "../db/albumArt.json"
 import doodle from '../assets/doodle.png'
 import M from 'materialize-css';
+import SideNav from "./SideNav"
 export class Home extends Component {
 
     componentDidMount(){
+        let elems = document.querySelectorAll('.carousel');
+        let instances = M.Carousel.init(elems, {});
         this.props.getTopTracksArt()
     }
-
     componentDidUpdate(){
         let elems = document.querySelectorAll('.carousel');
         let instances = M.Carousel.init(elems, {});
@@ -20,11 +22,9 @@ export class Home extends Component {
  
     render() {
         if(this.props.requesting){
-            return <h1>Loading</h1>
+            return <h1></h1>
         } else {
-            console.log(this.props.carousel);
             return (
-                
                 <div>
                         <section className="float-container gradient ">
                         <h3 className="center">Get better with Spotify.</h3>

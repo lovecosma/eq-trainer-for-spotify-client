@@ -4,6 +4,7 @@ const getUserInfo = (user_id) => {
         fetch("http://localhost:3001/users/" + user_id)
         .then(resp => resp.json())
         .then(user => {
+            localStorage.setItem("user", user)
             dispatch({type: 'LOGIN', user}) 
             }) 
         };

@@ -4,7 +4,7 @@ import Loading from "./Loading"
 import getUserInfo from "../actions/getUserInfo"
 import SideNav from './SideNav'
 import M from 'materialize-css';
-
+import {Redirect} from "react-router"
 export class UserHome extends Component {
      
 
@@ -20,6 +20,7 @@ export class UserHome extends Component {
            return <div><Loading/></div> 
         }else {
       
+          if(this.props.user.id){
             let { user } = this.props
             let playlists = user.playlists.map(playlist => {
                 return <li>{playlist.name}</li>
@@ -32,6 +33,9 @@ export class UserHome extends Component {
                     </ul>
                 </div> 
                 )
+          } else {
+            return <div><Loading/></div> 
+          }
         }
     }
 }
