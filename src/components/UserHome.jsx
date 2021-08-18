@@ -5,13 +5,12 @@ import getUserInfo from "../actions/getUserInfo"
 import SideNav from './SideNav'
 import M from 'materialize-css';
 import {Redirect} from "react-router"
+import Playground from "./Playground"
 export class UserHome extends Component {
      
 
     componentDidMount(){
-        if(this.props.location.state.user){
-            this.props.getUserInfo(this.props.location.state.user.id)
-        }
+            this.props.getUserInfo(this.props.user.id)
        }
 
    
@@ -20,28 +19,31 @@ export class UserHome extends Component {
            return <div><Loading/></div> 
         }else {
       
-          if(this.props.user.id){
-            let { user } = this.props
-            let playlists = user.playlists.map(playlist => {
-                return <li>{playlist.name}</li>
-            })
+        //   if(this.props.user.id){
+        //     let { user } = this.props
+        //     let playlists = user.playlists.map(playlist => {
+        //         return <li>{playlist.name}</li>
+        //     })
             return (
                 <div>
-                    <h1>Welcome {user.display_name}</h1>
-                    <ul>
-                    { playlists }
-                    </ul>
-                </div> 
+                <div className="black center" style={{marginTop: "5%"}}>
+                    <div>
+                        <h4 style={{padding: "25px"}}>Use your ears...</h4>
+                        <Playground/>
+                    </div>
+                </div>
+            </div> 
                 )
-          } else {
-            return <div><Loading/></div> 
-          }
+          } 
         }
     }
-}
+
 
 const mapStateToProps = ({usersReducer}) => {
-    return usersReducer
+    return {
+        requesting: usersReducer.requesting,
+        user: usersReducer.user
+    }
 }
 
 export default connect(mapStateToProps, {getUserInfo})(UserHome)

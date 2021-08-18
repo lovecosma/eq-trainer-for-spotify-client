@@ -13,18 +13,16 @@ export class LoginSuccess extends Component {
     render() {
         if(this.props.usersReducer.requesting){
             return (
-                
                 <div >
                     <Loading/>
                 </div>
-    
             )
         }else{
         return(
             <div>
             Successfully logging in with Spotify!
             Redirecting
-        </div>
+            </div>
         )
         }
     }

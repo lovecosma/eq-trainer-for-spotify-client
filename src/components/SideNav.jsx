@@ -27,7 +27,7 @@ import mixer from "../mixer.jpeg"
                 <div className="background">
                     <img width="300px" height="200px" src={mixer}/> 
                 </div>
-                {this.props.user.id ? <a href="#user"><img className="circle" style={{height: "125px", width: "125px"}} src={this.props.user.image_url}/></a> : <div></div>}
+                {this.props.user.id ? <a href="#user"><img className="circle" style={{height: "125px", width: "100px"}} src={this.props.user.image_url}/></a> : <div></div>}
                 <h5>{this.props.user.display_name}</h5>
                 </div></li>
                 <li><a href="#!"><i className="material-icons">cloud</i>First Link With Icon</a></li>

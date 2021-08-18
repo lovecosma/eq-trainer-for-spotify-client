@@ -31,7 +31,7 @@ export class App extends Component {
                     <Switch>
                         <Route exact path='/' render={(routerProps) => <Home {...routerProps} />} />
                         <Route exact path='/login' component={Login} />
-                        <Route exact path='/login_success/:token' render={(routerProps) => <LoginSuccess {...routerProps} user={this.props.user}/>}/>
+                        <Route exact path='/login_success/:token' render={(routerProps) => <LoginSuccess {...routerProps} />}/>
                         <Route exact path='/success' render={(routerProps) => <UserHome {...routerProps} />}/>
                         <Route exact path='/loading' component={Loading} />
                         <Route exact path='/logout' component={Logout} />

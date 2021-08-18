@@ -13,14 +13,6 @@ function usersReducer(state = { isLoggedIn: false, user: {},  requesting: true, 
             requesting: true
         }
 
-    case 'LOGOUT':
-        console.log("in logout");
-        return {
-            ...state,
-            user: {},
-            requesting: false
-        }
-
     case "START_REQUESTING_TOP_TRACK_ART":
         return {
             ...state,
@@ -48,7 +40,6 @@ function usersReducer(state = { isLoggedIn: false, user: {},  requesting: true, 
         return {
             isLoggedIn: true,
             user: {...action.user},
-            token: action.token,
             requesting: false
     }
 
