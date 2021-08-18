@@ -5,7 +5,7 @@ import NavLinks from "./NavLinks"
 import { NavLink } from 'react-router-dom';
 import {connect} from "react-redux";
 import logout from "../actions/logout"
-
+import mixer from "../mixer.jpeg"
 
  class SideNav extends Component {
 
@@ -22,22 +22,21 @@ import logout from "../actions/logout"
     render() {
         return (
         <div style={{display: "flex"}}>
-                <ul id="slide-out" class="sidenav">
-                <li><div class="user-view">
-                <div class="background">
-                   {this.props.user ?  <img src={this.props.user.image_url}/> :  <img src="images/office.jpg"/>}
+                <ul id="slide-out" className="sidenav">
+                <li><div className="user-view">
+                <div className="background">
+                    <img width="300px" height="200px" src={mixer}/> 
                 </div>
-                <a href="#user"><img class="circle" src={this.props.user.image_url}/></a>
-                <a href="#name"><span class="white-text name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                {this.props.user.id ? <a href="#user"><img className="circle" style={{height: "125px", width: "125px"}} src={this.props.user.image_url}/></a> : <div></div>}
+                <h5>{this.props.user.display_name}</h5>
                 </div></li>
-                <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+                <li><a href="#!"><i className="material-icons">cloud</i>First Link With Icon</a></li>
                 <li><a href="#!">Second Link</a></li>
-                <li><div class="divider"></div></li>
-                <li><a class="subheader">Subheader</a></li>
-                <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+                <li><div className="divider"></div></li>
+                <li><a className="subheader">Subheader</a></li>
+                <li><a className="waves-effect" href="#!">Third Link With Waves</a></li>
             </ul>
-                    <span style={{padding: "15px"}}><a href="#" data-target="slide-out" class="sidenav-trigger"><img src="https://img.icons8.com/material-outlined/24/ffffff/menu--v1.png"/></a></span>
+                    <span style={{padding: "15px"}}><a href="#" data-target="slide-out" className="sidenav-trigger"><img src="https://img.icons8.com/material-outlined/24/ffffff/menu--v1.png"/></a></span>
                 <nav >
 
                     <div className="nav-wrapper black white-text">
