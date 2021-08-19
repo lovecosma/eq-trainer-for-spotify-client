@@ -15,9 +15,11 @@ import getTopTracksArt from "./actions/getTopTracksArt"
 import Logout from "./components/Logout"
 export class App extends Component {
   
-componentWillUnmount(){
-  // debugger
-}
+
+  componentDidMount(){
+    let user = localStorage.getItem("user")
+  }
+
 
   render() {
        return (

@@ -36,7 +36,7 @@ import mixer from "../mixer.jpeg"
                 <li><NavLink to="/" className="subheader">Subheader</NavLink></li>
                 <li><NavLink className="waves-effect" to="/">Third Link With Waves</NavLink></li>
             </ul>
-                    <span style={{padding: "15px"}}><NavLink to="/" data-target="slide-out" className="sidenav-trigger"><img src="https://img.icons8.com/material-outlined/24/ffffff/menu--v1.png"/></NavLink></span>
+                    <span style={{padding: "15px"}}><a href="/" data-target="slide-out" className="sidenav-trigger"><img src="https://img.icons8.com/material-outlined/24/ffffff/menu--v1.png"/></a></span>
                 <nav >
 
                     <div className="nav-wrapper black white-text">
