@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
 import fetchUserTracks from "../actions/fetchUserTracks"
-
+import EQUI from "./EQUI"
+import * as Tone from "tone"
 export class Playground extends Component {
+
+    state={
+        playing: false
+    }
  
     componentDidMount(){
         if(this.props.user.id){
         this.props.fetchUserTracks(this.props.user)
         }
+    }
+
+    play = async () => {
+        await Tone.start()
+        this.setState({
+            playing: true
+        })
+        console.log('audio is ready')
     }
 
     render() {
@@ -28,6 +41,11 @@ export class Playground extends Component {
                     <h1>
                         <img src={this.props.tracks[0].album_art} width="200px" height="200px"/>
                     </h1>
+                    <br/>
+                    <button onClick={this.play}></button>
+                    <div>
+                     {this.state.playing ? <EQUI playing={this.state.playing}/> : "Loading"}
+                    </div>
                 </div>
             )
         }
