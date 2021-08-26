@@ -6,13 +6,6 @@ import * as Tone from "tone"
 import { Silver } from 'react-dial-knob'
 
 export class Playground extends Component {
-
-    state={
-        playing: false,
-        dials: {
-            one: 0
-        }
-    }
  
     componentDidMount(){
         if(this.props.user.id){
@@ -30,13 +23,6 @@ export class Playground extends Component {
         })
     }
 
-    play = async () => {
-        await Tone.start()
-        this.setState({
-            playing: true
-        })
-        console.log('audio is ready')
-    }
 
     render() {
         if(!this.props.tracks[0]){
@@ -57,48 +43,8 @@ export class Playground extends Component {
                         <img src={this.props.tracks[0].album_art} width="200px" height="200px"/>
                     </h1>
                     <br/>
-                    <button onClick={this.play}>Play Audio</button>
                     <div>
-                        <div className="block-container container center">
-                            <div className="block-child">
-                                <Silver
-                                    name="one"
-                                    diameter={200}
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                    value={this.state.dials.one}
-                                    onValueChange={this.changeDial}
-                                    ariaLabelledBy={'my-label'}
-                                />
-                            </div>
-                            <div className="block-child">
-                                <Silver
-                                    name="one"
-                                    diameter={200}
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                    value={this.state.dials.one}
-                                    onValueChange={this.changeDial}
-                                    ariaLabelledBy={'my-label'}
-                                />
-                            </div>
-                            <div className="block-child">
-                                <Silver
-                                    name="one"
-                                    diameter={200}
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                    value={this.state.dials.one}
-                                    onValueChange={this.changeDial}
-                                    ariaLabelledBy={'my-label'}
-                                />
-                            </div>
-                        </div>
-                        
-                     {this.state.playing ? <EQUI playing={this.state.playing}/> : "Loading"}
+                        <EQUI/>
                     </div>
                 </div>
             )
