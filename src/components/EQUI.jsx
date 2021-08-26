@@ -13,9 +13,9 @@ let buffer
 	const setup = (p5, canvasParentRef) => {
 		// use parent to render the canvas in this ref
 		// (without that p5 will render the canvas outside of your component)
-		p5.createCanvas(700, 500).parent(canvasParentRef);
-		p5.stroke(255)
-		fft = new Tone.FFT(1024)
+		p5.createCanvas(256, 256).parent(canvasParentRef);
+		p5.stroke(0)
+		fft = new Tone.FFT(256)
 		buffer = new Tone.Buffer(audioTest, (buff) => {
 			 
 		})
@@ -28,8 +28,10 @@ let buffer
     };
 	
 	const draw = (p5) => {
-		p5.background(255)
 		if(props.playing && done){
+			let spectrum = fft.getValue()
+			p5.stroke(255)
+			
 			
 		}
     };

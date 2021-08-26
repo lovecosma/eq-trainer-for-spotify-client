@@ -73,6 +73,16 @@ body {
         font-size: xx-large;
         margin-top: 50px;
     } 
+
+    .float-child3 {
+        float: left;
+        padding: 20px;
+    }
+    
+    .block-child{
+        display: inline-block;
+        padding: 20px
+    }
    
     .carousel{
         padding: 20px;
@@ -96,3 +106,4 @@ body {
         align-items: center;
         justify-content: center;
     }
+
