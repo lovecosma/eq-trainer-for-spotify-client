@@ -13,6 +13,7 @@ import usersReducer from './reducers/usersReducer';
 import history from './history';
 import getTopTracksArt from "./actions/getTopTracksArt"
 import Logout from "./components/Logout"
+import Playground  from './components/Playground';
 export class App extends Component {
   
 
@@ -29,6 +30,7 @@ export class App extends Component {
                     <SideNav />
                     <Switch>
                         <Route exact path='/' render={(routerProps) => <Home {...routerProps} />} />
+                        <Route exact path='/playground' render={(routerProps) => <Playground {...routerProps} />} />
                         <Route exact path='/login' component={Login} />
                         <Route exact path='/login_success/:token' render={(routerProps) => <LoginSuccess {...routerProps} />}/>
                         <Route exact path='/success' render={(routerProps) => <UserHome {...routerProps} />}/>

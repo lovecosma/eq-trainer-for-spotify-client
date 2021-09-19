@@ -26,7 +26,7 @@ export class UserHome extends Component {
         //     })
             return (
                 <div>
-                <div className="black center" style={{marginTop: "5%"}}>
+                <div className="black" style={{marginTop: "5%"}}>
                     <div>
                         <h4 style={{padding: "25px"}}>Use your ears...</h4>
                         <Playground/>

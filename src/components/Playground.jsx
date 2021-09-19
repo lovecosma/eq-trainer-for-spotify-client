@@ -6,21 +6,29 @@ import * as Tone from "tone"
 import { Silver } from 'react-dial-knob'
 
 export class Playground extends Component {
+
+    state={
+        track: {}
+    }
  
     componentDidMount(){
         if(this.props.user.id){
         this.props.fetchUserTracks(this.props.user)
         }
+        console.log(this.state);
     }
 
-    changeDial = (e) => {
-        this.setState({
-            ...this.state,
-            dials: {
-                ...this.state.dials,
-                one: e
+    static getDerivedStateFromProps = (props, state) => {
+        console.log(props.tracks[Math.random(0, props.tracks.length)]);
+        return ({
+            track: {...props.tracks[Math.random(0, props.tracks.length)]}
             }
-        })
+        )
+    }
+
+    randomTrack = (arrayOfTracks) => {
+        debugger
+    
     }
 
 
@@ -35,7 +43,7 @@ export class Playground extends Component {
             )
         } else {
             return (
-                <div>
+                <div className="center">
                     <h1>
                         {this.props.tracks[0].name}
                     </h1>
@@ -44,7 +52,7 @@ export class Playground extends Component {
                     </h1>
                     <br/>
                     <div>
-                        <EQUI/>
+                        <EQUI tracks={this.props.tracks}/>
                     </div>
                 </div>
             )
@@ -53,12 +61,10 @@ export class Playground extends Component {
 }
 
 const mapStateToProps = ({usersReducer, tracksReducer}) => {
-    // debugger
     return {
         user: usersReducer.user, 
         tracks: tracksReducer.tracks,
         requesting: tracksReducer.requesting
-
     }
 }
 

@@ -4,6 +4,7 @@ const getTopTracksArt = () => {
         fetch("http://localhost:3001/top_albums")
         .then(resp => resp.json())
         .then(albums => {
+          // debugger
           dispatch({type: 'ADD_TRACK_ART', albums})
         })
     }

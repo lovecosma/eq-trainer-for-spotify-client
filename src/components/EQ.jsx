@@ -9,7 +9,7 @@ import audioTest from "../assets/audio-test.wav"
 	let done = false
 	let buffer
 	let {one, two, three} = dials
-
+	
 	const setup = (p5, canvasParentRef) => {
 		// use parent to render the canvas in this ref
 		// (without that p5 will render the canvas outside of your component)
@@ -31,7 +31,6 @@ import audioTest from "../assets/audio-test.wav"
 		if(playing && done){
 			// let spectrum = fft.getValue()
 			console.log(one);
-			// p5.background(one, two, three)
 		}
     };
 

@@ -16,7 +16,7 @@ class NavLinks extends Component {
             return (
                 <div>
                     <li><NavLink to="/">home</NavLink></li>
-                    <li><NavLink to="/">Playground</NavLink></li>
+                    <li><NavLink to="/playground">Playground</NavLink></li>
                     <li><NavLink to="/">Train</NavLink></li>
                     <li><a onClick={this.handleClick}>logout</a></li>
                 </div>

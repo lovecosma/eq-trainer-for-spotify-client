@@ -37,7 +37,7 @@ export class Home extends Component {
                         
       
                                 <div className="carousel" style={{width: "50%"}}>
-                                    {this.props.carousel.map(album => <a href="/" className="carousel-item" ><img src={album.image}/></a>)}
+                                    {this.props.carousel[0] ? this.props.carousel.map(album => <a href="/" className="carousel-item" ><img src={album.image}/></a>) : <div></div>}
                                 </div>
                             </div>
                         </section>
