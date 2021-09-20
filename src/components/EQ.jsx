@@ -5,8 +5,11 @@ import audioTest from "../assets/audio-test.wav"
 
  const EQ = ({playing, dials, track}) => {
     const {one, two, three} = dials
+	const mapRange = (value, x1, y1, x2, y2) => (value - x1) * (y2 - x2) / (y1 - x1) + x2;
+	let freq = mapRange(one, 0, 100, 0, 2000)
+	const biquad = new Tone.BiquadFilter(freq, 'lowpass')
 	const player =  new Tone.Player(track.preview_url, () => {
-		player.toDestination().start()	
+		player.connect(biquad).toDestination().start()	
 	})
 	if(playing){
 		return (

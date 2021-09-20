@@ -18,16 +18,6 @@ export class Playground extends Component {
         console.log(this.state);
     }
 
-    static getDerivedStateFromProps = (props, state) => {
-        console.log(props.tracks[Math.random(0, props.tracks.length)]);
-        return ({
-            track: {...props.tracks[Math.random(0, props.tracks.length)]}
-            }
-        )
-    }
-
-    
-
 
     render() {
         console.log(this.props.tracks[0]);
