@@ -26,13 +26,11 @@ export class Playground extends Component {
         )
     }
 
-    randomTrack = (arrayOfTracks) => {
-        debugger
     
-    }
 
 
     render() {
+        console.log(this.props.tracks[0]);
         if(!this.props.tracks[0]){
             return (
                 <div>
@@ -52,7 +50,7 @@ export class Playground extends Component {
                     </h1>
                     <br/>
                     <div>
-                        <EQUI tracks={this.props.tracks}/>
+                        <EQUI track={this.props.tracks[0]}/>
                     </div>
                 </div>
             )

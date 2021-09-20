@@ -38,8 +38,7 @@ class EQUI extends Component {
 		return (
             <div>
             <button onClick={this.play}>Play</button>
-            <br></br>
-                {this.state.playing ? <EQ playing={this.state.playing} dials={this.state.dials} track={{}} />: <h1>Press play to hear music</h1>}
+                {this.state.playing ? <EQ playing={this.state.playing} dials={this.state.dials} track={this.props.track} />: <h1>Press play to hear music</h1>}
 			<div className="block-container container center">
                 <EQKnob name={"one"} handleTurn={this.handleTurn}/>
                 <EQKnob name={"two"} handleTurn={this.handleTurn}/>
