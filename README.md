@@ -7,3 +7,6 @@ This is my current project
 - Login with Spotify
 - Experiment with EQ on tracks from your Spotify playlists in the Playground
 - Challenge yourself by guessing the parameters of the EQ in the Training section
+
+
+# Key Technology:
