@@ -20,7 +20,6 @@ export class Playground extends Component {
 
 
     render() {
-        console.log(this.props.tracks[0]);
         if(!this.props.tracks[0]){
             return (
                 <div>

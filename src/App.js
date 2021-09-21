@@ -19,6 +19,9 @@ export class App extends Component {
 
   componentDidMount(){
     let user = localStorage.getItem("user")
+    // if(user){
+    //   this.props.getUserInfo(user)
+    // }
   }
 
 

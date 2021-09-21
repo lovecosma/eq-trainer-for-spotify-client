@@ -15,21 +15,26 @@ class EQUI extends Component {
         },
         freq: 0,
         player: {},
-        biquad: {}
+        lowpass: {},
+        highpass: {}
    }
     mapRange = (value, x1, y1, x2, y2) => (value - x1) * (y2 - x2) / (y1 - x1) + x2;
 
    componentDidMount(){
 	// let freq = mapRange(one, 0, 100, 0, 2000)
-	const biquad = new Tone.Filter(this.state.freq, 'lowpass').toDestination()
+	const lowpass = new Tone.BiquadFilter(20, 'lowpass')
+    const highpass = new Tone.BiquadFilter(this.state.freq, 'highpass')
+    lowpass.gain.value = -20
+    highpass.gain.value = -20
     this.setState({ 
-        biquad: biquad
+        lowpass,
+        highpass
     })
 	const player =  new Tone.Player(this.props.track.preview_url, () => {
         this.setState({
             player: player
         })
-        this.state.player.chain(this.state.biquad).toDestination()
+        this.state.player.chain(this.state.lowpass, Tone.Destination)
         console.log("ready")
 	})
    }
@@ -51,12 +56,14 @@ class EQUI extends Component {
                 [knobInfo.name]: knobInfo.value
             }
         })
-        let freq = this.mapRange(this.state.dials.one, 0, 100, 0, 2000)
+        let freq = this.mapRange(this.state.dials.one, 0, 100, 0, 15000)
+        let freq2 = this.mapRange(this.state.dials.two, 0, 100, 0, 15000)
         this.setState({
             freq
         })
-        this.state.biquad.frequency.value = this.state.freq
-        console.log(this.state.biquad.frequency.value);
+        this.state.lowpass.frequency.value = this.state.freq
+        this.state.highpass.frequency.value = freq2
+        console.log(this.state.lowpass.frequency.value);
     }
 
 
