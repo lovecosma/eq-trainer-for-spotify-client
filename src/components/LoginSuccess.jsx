@@ -1,33 +1,19 @@
-import React, { Component } from 'react'
+import React, {useEffect, useReducer} from 'react'
 import { connect } from 'react-redux'
 import Loading from './Loading'
 import SideNav from "./SideNav"
+import { useParams } from "react-router-dom"
+import usersReducer from "../reducers/usersReducer"
+import { getUser } from '../actions/users'
 
-export class LoginSuccess extends Component {
+export function LoginSuccess(){
 
-    componentDidMount(){
-    }
-
-    render() {
-        if(this.props.usersReducer.requesting){
-            return (
-                <div >
-                    <Loading/>
-                </div>
-            )
-        }else{
-        return(
-            <div>
-            Successfully logging in with Spotify!
-            Redirecting
-            </div>
-        )
-        }
-    }
+    const { id } = useParams()
+     const [state, dispatch] = useReducer(usersReducer, {loggedIn: false, user: {},  requesting: false})
+    useEffect(() => {
+        getUser(dispatch, id)
+    }, [])
 }
 
-const mapStateToProps = ({usersReducer}) => {
-    return { usersReducer }
-}
 
 export default LoginSuccess

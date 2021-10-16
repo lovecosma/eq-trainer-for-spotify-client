@@ -6,14 +6,11 @@ export class Login extends Component {
 
     render() {
             return (
-              <div>
                 <div className="centered_button" >
                     <form action="http://localhost:3001/login" method="get">
-                        <button id="btn" type="submit" > Login tihe Spotify </button> 
+                        <button id="btn" type="submit" > Login with Spotify </button> 
                     </form>
-                   
                 </div>
-              </div>
             )}
     }
 

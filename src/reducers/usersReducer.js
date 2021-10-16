@@ -14,8 +14,6 @@ function usersReducer(state = {loggedIn: false, user: {},  requesting: true} , a
         }
 
     case 'LOGIN':
-        // console.log(action.user);
-        // debugger
         return {
             loggedIn: true,
             user: {...action.user},

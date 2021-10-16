@@ -1,4 +1,4 @@
-const tracksReducer = (state = {tracks: [], requesting: false, carousel: [], grid: []}, action) => {
+const albumsReducer = (state = {tracks: [], requesting: true, carousel: [], grid: []}, action) => {
     switch(action.type){
     case "REQUEST_TRACKS":
         return {
@@ -12,13 +12,13 @@ const tracksReducer = (state = {tracks: [], requesting: false, carousel: [], gri
             requesting: false,
             tracks: [...action.tracks]
         }
-        case "START_REQUESTING_TOP_TRACK_ART":
+        case "START_REQUESTING_TOP_ALBUMS_ART":
             return {
                 ...state,
                 requesting: true
             }
     
-        case 'ADD_TRACK_ART':
+        case 'ADD_ALBUMS_ART':
             let carousel = []
             let grid = []
             let counter = 0
@@ -28,7 +28,6 @@ const tracksReducer = (state = {tracks: [], requesting: false, carousel: [], gri
             while(counter < 17){
                 grid.push(action.albums[counter++])
             }
-            console.log(state);
             return {
                 ...state,
                 carousel: [...carousel],
@@ -42,4 +41,4 @@ const tracksReducer = (state = {tracks: [], requesting: false, carousel: [], gri
     
 }
 
-export default tracksReducer
+export default albumsReducer

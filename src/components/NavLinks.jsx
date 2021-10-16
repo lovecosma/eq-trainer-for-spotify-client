@@ -11,7 +11,6 @@ class NavLinks extends Component {
         this.props.logout()
     }
     render(){
-        console.log(this.props);
         if(this.props.loggedIn){
             return (
                 <div>

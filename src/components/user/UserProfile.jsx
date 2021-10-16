@@ -3,19 +3,10 @@ import { useParams } from "react-router-dom"
 import { getUser } from '../../actions/users'
 import usersReducer from '../../reducers/usersReducer'
 
-export default function UserProfile() {
-    const {id} = useParams()
-    const [{user, loggedIn, requesting}, dispatch] = useReducer(usersReducer, {loggedIn: false, user: {},  requesting: true})
-    useEffect(() => {
-        getUser(dispatch, id)
-    }, [])
-
+export default function UserProfile({user}) {
     return (
         <div>
-            {requesting 
-            ? <h2>Requesting</h2>
-            : <div><h2>Hello, {user.display_name}</h2></div>}
-            
+            <div><h2>Hello, {user.display_name}</h2></div>     
         </div>
     )
 

@@ -2,7 +2,6 @@ import history from '../history';
 
 const logout = () => {
     return dispatch => {
-        
         dispatch({type: "START_LOGGING_OUT"})
         let configObj = {
             "method": "POST",
@@ -14,6 +13,7 @@ const logout = () => {
         fetch(`http://localhost:3001/logout`, configObj)
         .then(resp => resp.json())
         .then(json => {
+        localStorage.removeItem("user")
           dispatch({type: "LOGOUT"})
           history.push("/logout")
         })

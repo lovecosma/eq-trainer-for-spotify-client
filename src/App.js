@@ -2,23 +2,24 @@ import React, { useEffect, useReducer } from 'react'
 import {getUser} from "./actions/users"
 import "./App.css"
 import usersReducer from './reducers/usersReducer'
-
+import GuestRoutes from "./components/guest/GuestRouters"
+import UserRoutes from "./components/user/UserRoutes"
 export function App () {
 
-    const [{user, loggedIn, requesting}, dispatch] = useReducer(usersReducer, {loggedIn: false, user: {},  requesting: true})
+    const [{user, loggedIn, requesting}, dispatch] = useReducer(usersReducer, {loggedIn: false, user: {},  requesting: false})
 
     useEffect(() => {
       let continuedUser = localStorage.getItem("user")
-        if( continuedUser !== undefined ){
+        if( continuedUser !== null ){
           getUser(dispatch, continuedUser.id)
-        }
+        } 
     }, [])
 
-      if(loggedIn){
-        return <div>{user.admin ? <AdminRouter/> : <UserRouter/>}</div>
-      } else {
-        return <GuestRouter/>
-      }
+            return (
+              <div>
+                {user ? <GuestRoutes/> : <UserRoutes user={user} />}
+              </div>
+            )
 
   }
 

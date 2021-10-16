@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function UserNav() {
+export default function UserNav({user}) {
     return (
         <div>
             <nav>
