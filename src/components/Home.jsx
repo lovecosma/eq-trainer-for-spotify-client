@@ -30,7 +30,6 @@ function Home() {
     if(requesting){
         return <div><Loading/></div>
     } else {
-        debugger
         return (
             <div>
                 <section className="float-container gradient ">

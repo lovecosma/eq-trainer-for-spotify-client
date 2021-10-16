@@ -1,23 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import { connect } from "react-redux"
-import logout from "../actions/logout"
+import {logout} from "../actions/users"
 import {NavLink} from "react-router-dom"
 
 
 
-class NavLinks extends Component {
-    
-     handleClick = () => {
-        this.props.logout()
-    }
-    render(){
-        if(this.props.loggedIn){
+function NavLinks ({user}) {
+    if(user.id){
             return (
                 <div>
                     <li><NavLink to="/">home</NavLink></li>
                     <li><NavLink to="/playground">Playground</NavLink></li>
                     <li><NavLink to="/">Train</NavLink></li>
-                    <li><a onClick={this.handleClick}>logout</a></li>
+                    <li><a>logout</a></li>
                 </div>
             )
         } else {
@@ -28,16 +23,7 @@ class NavLinks extends Component {
                 </div>
             )
         }
-    }
 }
 
-const mapStateToProps = ({usersReducer}) => {
-    return {
-        user: usersReducer.user,
-        requesting: usersReducer.requesting,
-        loggedIn: usersReducer.loggedIn
-    }
-}
-
-export default connect(mapStateToProps, {logout})(NavLinks)
+export default NavLinks
 

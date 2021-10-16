@@ -2,17 +2,17 @@ import React from 'react'
 import {Route, Switch } from "react-router-dom"
 import UserProfile from './UserProfile'
 import Logout from "../Logout"
-import UserNav from "./UserNav"
 import AdminRoutes from '../admin/AdminRoutes'
-export default function UserRoutes({user}) {
+import Home from '../Home'
+export default function UserRoutes({user, dispatch}) {
     return (
         <div>
             {user.admin ? <AdminRoutes/> : 
             <div>
-            <UserNav user={user} />
             <Switch>
-                <Route path="/users/:id"><UserProfile user={user}/></Route>
+                <Route path="/users/:id"><UserProfile user={user} dispatch={dispatch}/></Route>
                 <Route exact path='/logout' component={Logout} />
+                <Route exact path='/'><Home/></Route>
             </Switch></div>
             }
         </div>
