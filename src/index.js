@@ -15,7 +15,6 @@ import UserHome from './components/UserHome'
 import "./App.css"
 import Loading from "./components/Loading"
 import LoginSuccess from './components/LoginSuccess'
-import getUserInfo from './actions/getUserInfo'
 import { connect } from 'react-redux'
 import SideNav from "./components/SideNav"
 import usersReducer from './reducers/usersReducer';
