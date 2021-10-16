@@ -20,30 +20,7 @@ export class Playground extends Component {
 
 
     render() {
-        if(!this.props.tracks[0]){
-            return (
-                <div>
-                    <div>
-                        Hello
-                    </div> 
-                </div>
-            )
-        } else {
-            return (
-                <div className="center">
-                    <h1>
-                        {this.props.tracks[0].name}
-                    </h1>
-                    <h1>
-                        <img src={this.props.tracks[0].album_art} width="200px" height="200px"/>
-                    </h1>
-                    <br/>
-                    <div>
-                        <EQUI track={this.props.tracks[0]}/>
-                    </div>
-                </div>
-            )
-        }
+        return <div>Hello</div>
     }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Router, Switch, Route } from 'react-router-dom';
 import Login from "./components/Login"
 import Home from "./components/Home"
-import UserHome from './components/UserHome'
+// import UserHome from './components/UserHome'
 import "./App.css"
 import Loading from "./components/Loading"
 import LoginSuccess from './components/LoginSuccess'
@@ -14,14 +14,15 @@ import history from './history';
 import getTopTracksArt from "./actions/getTopTracksArt"
 import Logout from "./components/Logout"
 import Playground  from './components/Playground';
+import UserHome from "./components/user/UserHome"
 export class App extends Component {
   
 
   componentDidMount(){
     let user = localStorage.getItem("user")
-    // if(user){
-    //   this.props.getUserInfo(user)
-    // }
+    if(user){
+      this.props.getUserInfo(user)
+    }
   }
 
 
@@ -33,12 +34,10 @@ export class App extends Component {
                     <SideNav />
                     <Switch>
                         <Route exact path='/' render={(routerProps) => <Home {...routerProps} />} />
-                        <Route exact path='/playground' render={(routerProps) => <Playground {...routerProps} />} />
+                        <Route path="/:user_name"><UserHome/></Route>
                         <Route exact path='/login' component={Login} />
-                        <Route exact path='/login_success/:token' render={(routerProps) => <LoginSuccess {...routerProps} />}/>
-                        <Route exact path='/success' render={(routerProps) => <UserHome {...routerProps} />}/>
-                        <Route exact path='/loading' component={Loading} />
                         <Route exact path='/logout' component={Logout} />
+                        <Route exact path='/playground' render={(routerProps) => <Playground {...routerProps} />} />
                     </Switch>
                 </Router> 
               </div>

@@ -22,8 +22,8 @@ class EQUI extends Component {
 
    componentDidMount(){
 	// let freq = mapRange(one, 0, 100, 0, 2000)
-	const lowpass = new Tone.BiquadFilter(20, 'lowpass')
-    const highpass = new Tone.BiquadFilter(this.state.freq, 'highpass')
+	const lowpass = new Tone.BiquadFilter(20000, 'lowpass')
+    const highpass = new Tone.BiquadFilter(0, 'highpass')
     lowpass.gain.value = -20
     highpass.gain.value = -20
     this.setState({ 
@@ -34,7 +34,7 @@ class EQUI extends Component {
         this.setState({
             player: player
         })
-        this.state.player.chain(this.state.lowpass, Tone.Destination)
+        this.state.player.chain(this.state.lowpass, this.state.highpass, Tone.Destination)
         console.log("ready")
 	})
    }
@@ -56,8 +56,8 @@ class EQUI extends Component {
                 [knobInfo.name]: knobInfo.value
             }
         })
-        let freq = this.mapRange(this.state.dials.one, 0, 100, 0, 15000)
-        let freq2 = this.mapRange(this.state.dials.two, 0, 100, 0, 15000)
+        let freq = this.mapRange(this.state.dials.one, 0, 100, 0, 20000)
+        let freq2 = this.mapRange(this.state.dials.two, 0, 100, 0, 20000)
         this.setState({
             freq
         })
