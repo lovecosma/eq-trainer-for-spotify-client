@@ -3,7 +3,6 @@ export const getUser = (dispatch, id) => {
     fetch("http://localhost:3001/users/" + id)
     .then(resp => resp.json())
     .then(user => {
-        debugger
         dispatch({type:'LOGIN', user}) 
     }) 
 }

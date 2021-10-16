@@ -1,14 +1,15 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import UserHome from '../user/UserHome'
+import AdminProfile from './AdminProfile'
 import Logout from "../Logout"
-
-export default function UserRouter() {
+import AdminNav from "./AdminNav"
+export default function AdminRouter() {
     return (
         <div>
             <Router>
+                <UserNav/>
                 <Switch>
-                    <Route path="/users/:id"><UserHome/></Route>
+                    <Route path="/users/:id"><AdminProfile/></Route>
                     <Route exact path='/logout' component={Logout} />
                 </Switch>
             </Router>
