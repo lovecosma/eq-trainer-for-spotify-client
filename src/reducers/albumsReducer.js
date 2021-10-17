@@ -7,6 +7,7 @@ const albumsReducer = (state = {tracks: [], requesting: true, carousel: [], grid
         }
 
     case "ADDING_TRACKS":
+        debugger
         return {
             ...state,
             requesting: false,

@@ -5,13 +5,10 @@ import Login from "../Login"
 import LoginSuccess from '../LoginSuccess'
 
 export default function GuestRoutes() {
-    console.log("Guest");
     return (
         <div>
-            <Switch>
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/' component={Home} />
-            </Switch>
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/' component={Home} />
         </div>
     )
 }

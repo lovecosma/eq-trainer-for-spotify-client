@@ -1,11 +1,11 @@
   
 import { combineReducers } from 'redux'
 import usersReducer from "./usersReducer"
-import tracksReducer from "./tracksReducer"
+import albumsReducer from "./albumsReducer"
 
 const rootReducer = combineReducers({
     usersReducer,
-    tracksReducer
+    albumsReducer
 })
 
 export default rootReducer

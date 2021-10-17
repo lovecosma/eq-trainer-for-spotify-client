@@ -1,5 +1,5 @@
 import React, {useEffect, useReducer, useCallback} from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import FrequencyBar from "./FrequencyBar"
 import styles from "./Home.css"
 import Nav from "./Nav"
@@ -8,23 +8,30 @@ import doodle from '../assets/doodle.png'
 import M from 'materialize-css';
 import SideNav from "./SideNav"
 import {NavLink} from "react-router-dom"
-import albumsReducer from '../reducers/albumsReducer'
 import { getTopAlbumsArt } from "../actions/albums"
 import Loading from './Loading'
 
 function Home() {
-
-    const [{grid, carousel, requesting}, dispatch] = useReducer(albumsReducer, {tracks: [], requesting: true, carousel: [], grid: []})
+    const dispatch = useDispatch()
+    const {grid, carousel, requesting} = useSelector(({albumsReducer}) => {
+        return {
+            grid: albumsReducer.grid,
+            carousel: albumsReducer.carousel,
+            request: albumsReducer.requesting
+        }
+    })
      useEffect(() => {
         getTopAlbumsArt(dispatch)
     }, [])
 
     useEffect(
         () => {
-            let elems = document.querySelectorAll('.carousel');
-            let instances = M.Carousel.init(elems, {});
+            if(carousel.length !== 0){
+                let elems = document.querySelectorAll('.carousel');
+                let instances = M.Carousel.init(elems, {});
+            }
         },
-        [carousel],
+        [carousel]
     )
 
     if(requesting){
@@ -41,7 +48,7 @@ function Home() {
                         </div>
                         <div>
                             <div className="carousel" style={{width: "50%"}}>
-                                {carousel.map(album => <a href="/" className="carousel-item" ><img src={album.image}/></a>)}
+                                {carousel.map(album => <a key={album.id} href="/" className="carousel-item" ><img src={album.image}/></a>)}
                             </div>
                         </div>
                     </section>
@@ -58,7 +65,7 @@ function Home() {
                     <section>
                         <div className="float-container2 gradient2" style={{padding: "100px", backgroundColor: "rgb(0,181,21)"}}>
                         <div className="game-board float-child2">
-                            {grid.map(album => <div className="box black" ><img className="z-depth-5" src={album.image} alt="" width="200px" height="200px" style={{padding: "5px"}}/></div>)}
+                            {grid.map(album => <div key={album.id} className="box black" ><img className="z-depth-5" src={album.image} alt="" width="200px" height="200px" style={{padding: "5px"}}/></div>)}
                             </div>
                             <div className="float-child2" style={{marginLeft: "200px"}}>
                                 <h1>Tune into to the <b className="green-text">best</b> to be the <b className="green-text">best</b></h1>

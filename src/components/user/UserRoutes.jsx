@@ -1,20 +1,20 @@
 import React from 'react'
-import {Route, Switch } from "react-router-dom"
+import {Route} from "react-router-dom"
 import UserProfile from './UserProfile'
 import Logout from "../Logout"
 import AdminRoutes from '../admin/AdminRoutes'
 import Home from '../Home'
-export default function UserRoutes({user, dispatch}) {
+import { useSelector } from 'react-redux'
+import LoginSuccess from '../LoginSuccess'
+export default function UserRoutes() {
     return (
         <div>
-            {user.admin ? <AdminRoutes/> : 
             <div>
-            <Switch>
-                <Route path="/users/:id"><UserProfile user={user} dispatch={dispatch}/></Route>
+                <Route exact path="/users/:id"><UserProfile/></Route>
+                <Route exact path="/users/:id/initialize"><LoginSuccess/></Route>
                 <Route exact path='/logout' component={Logout} />
                 <Route exact path='/'><Home/></Route>
-            </Switch></div>
-            }
+            </div>
         </div>
     )
 }

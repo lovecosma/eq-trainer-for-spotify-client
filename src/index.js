@@ -1,17 +1,25 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers/rootReducer';
 import App from './App'
 import "./index.css"
-import "./App.css"
 import {BrowserRouter as Router} from "react-router-dom"
+
+import "./App.css"
+
+const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>
    <div>
-     <Router>
-        <App/>
-     </Router>
+      <Provider store={store}>
+        <Router>
+          <App/>
+        </Router>
+      </Provider>
    </div>
   </React.StrictMode>,
   document.getElementById('root')

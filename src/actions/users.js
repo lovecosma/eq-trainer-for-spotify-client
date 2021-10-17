@@ -4,13 +4,12 @@ export const getUser = (dispatch, id, history) => {
     fetch("http://localhost:3001/users/" + id)
     .then(resp => resp.json())
     .then(user => {
-        dispatch({type:'LOGIN', user}) 
-        // history.push(`/users/${user.id}`)
+        dispatch({type:'LOGIN', user})
+        history.push(`/users/${user.id}`) 
     }) 
 }
 
-    export const logout = () => {
-        return dispatch => {
+export const logout = (dispatch, history) => {
             dispatch({type: "START_LOGGING_OUT"})
             let configObj = {
                 "method": "POST",
@@ -24,7 +23,6 @@ export const getUser = (dispatch, id, history) => {
             .then(json => {
             localStorage.removeItem("user")
             dispatch({type: "LOGOUT"})
-            // history.push("/logout")
+            history.push("/")
             })
-        }
     }
