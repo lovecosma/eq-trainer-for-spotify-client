@@ -1,11 +1,11 @@
 
-export const getUser = (dispatch, id, history) => {
+export const getUser = (dispatch, id) => {
     dispatch({type: 'START_ADDING_USER_REQUEST'}) 
     fetch("http://localhost:3001/users/" + id)
     .then(resp => resp.json())
     .then(user => {
+        localStorage.setItem("user_id", user.id)
         dispatch({type:'LOGIN', user})
-        history.push(`/users/${user.id}`) 
     }) 
 }
 

@@ -1,8 +1,7 @@
-function usersReducer(state = {loggedIn: false, user: {},  requesting: false, toggle: false} , action) {
+function usersReducer(state = {loggedIn: false, user: {},  requesting: false} , action) {
     switch (action.type) {
 
     case 'START_ADDING_USER_REQUEST':
-        console.log("here");
         return {
             ...state,
             requesting: true

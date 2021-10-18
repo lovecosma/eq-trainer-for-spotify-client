@@ -4,7 +4,6 @@ import Nav from "./Nav"
 import NavLinks from "./NavLinks"
 import { NavLink } from 'react-router-dom';
 import {connect} from "react-redux";
-import logout from "../actions/logout"
 import mixer from "../mixer.jpeg"
 
  class SideNav extends Component {
@@ -65,4 +64,3 @@ return {
     }
 }
 
-export default connect(mapStateToProps, { logout })(SideNav)

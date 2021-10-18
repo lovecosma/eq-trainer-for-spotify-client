@@ -1,21 +1,22 @@
-import React, { useEffect, useReducer, useRef } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { getUser } from '../../actions/users'
-import usersReducer from '../../reducers/usersReducer'
-
+import { Redirect } from "react-router-dom"
+import {UserContext} from "../../App"
 export default function UserProfile() {
-    const {user, requesting} = useSelector(({usersReducer}) => {
+    const {id} = useParams()
+    const {user} = useSelector(({usersReducer}) => {
         return {
-            user: usersReducer.user,
-            requesting: usersReducer.requesting
+          user: usersReducer.user,
+          loggedIn: usersReducer.loggedIn,
+          requesting: usersReducer.requesting,
         }
-    })
-    
-    return (
-        <div>
-           {requesting ? <h1>Loading</h1> : <h1>Hello, {user.display_name}</h1>} 
-        </div>
-    )
-
+      })
+  return (
+      <div>
+         <div>Hello, {user.display_name}</div>
+         {user.playlists ? user.playlists.map(playlist => <h4 key={playlist.id} >{playlist.name}</h4>) : <div></div>}
+      </div>
+  )
 }

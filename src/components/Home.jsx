@@ -1,13 +1,7 @@
-import React, {useEffect, useReducer, useCallback} from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux'
-import FrequencyBar from "./FrequencyBar"
-import styles from "./Home.css"
-import Nav from "./Nav"
-import albums from "../db/albumArt.json"
-import doodle from '../assets/doodle.png'
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import M from 'materialize-css';
-import SideNav from "./SideNav"
-import {NavLink} from "react-router-dom"
+// import SideNav from "./SideNav"
 import { getTopAlbumsArt } from "../actions/albums"
 import Loading from './Loading'
 
