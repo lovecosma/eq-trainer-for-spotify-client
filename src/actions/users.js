@@ -1,12 +1,10 @@
 
-export const getUser = (dispatch, id) => {
-    dispatch({type: 'START_ADDING_USER_REQUEST'}) 
-    fetch("http://localhost:3001/users/" + id)
-    .then(resp => resp.json())
-    .then(user => {
+export async function getUser(dispatch, id){
+        dispatch({type: 'START_ADDING_USER_REQUEST'})  
+        let resp = await fetch("http://localhost:3001/users/" + id)
+        const user = await resp.json()
         localStorage.setItem("user_id", user.id)
         dispatch({type:'LOGIN', user})
-    }) 
 }
 
 export const logout = (dispatch, history) => {
@@ -21,7 +19,7 @@ export const logout = (dispatch, history) => {
             fetch(`http://localhost:3001/logout`, configObj)
             .then(resp => resp.json())
             .then(json => {
-            localStorage.removeItem("user")
+            localStorage.removeItem("user_id")
             dispatch({type: "LOGOUT"})
             history.push("/")
             })

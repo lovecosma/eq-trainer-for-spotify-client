@@ -10,7 +10,6 @@ export function LoginSuccess({requesting}){
     const {id} = useParams()
      const dispatch = useDispatch()
      useEffect(() => {
-       getUser(dispatch,id)
      }, [])
     
     return (
