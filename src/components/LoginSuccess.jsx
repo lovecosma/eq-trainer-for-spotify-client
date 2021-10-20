@@ -6,15 +6,11 @@ import { Redirect, useHistory, useParams } from "react-router-dom"
 import { getUser } from '../actions/users'
 import {useDispatch} from "react-redux"
 
-export function LoginSuccess({requesting}){
-    const {id} = useParams()
-     const dispatch = useDispatch()
-     useEffect(() => {
-     }, [])
-    
+export function LoginSuccess(){
+     
     return (
         <div>
-            {id ? <Redirect to={`/users/${id}`}/> : <h3>Loading</h3>}
+            {id ? <Redirect to={`/client/${id}`}/> : <h3>Loading</h3>}
         </div>
     )
 }

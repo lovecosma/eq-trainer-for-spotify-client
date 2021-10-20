@@ -11,6 +11,7 @@ export default function UserProfile() {
     const {user, loggedIn, requesting} = state
     useEffect(() => {
         let user_id = localStorage.getItem("user_id")
+        debugger
         if(!!!user_id){
             history.push("/")
         }
