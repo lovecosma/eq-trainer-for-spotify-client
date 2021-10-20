@@ -1,24 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink, useHistory } from "react-router-dom"
 import { logout } from '../actions/users'
 import {useDispatch, useSelector} from "react-redux"
+import { UserContext } from '../UserProvider'
 
 export default function NavBar() {
-    const dispatch = useDispatch()
     const history = useHistory()
-    const {loggedIn} = useSelector(({usersReducer}) => {
-        return {
-            loggedIn: usersReducer.loggedIn
-        }
-    })
+    const {loggedIn, logout} = useContext(UserContext)
     if(loggedIn){
         return (
             <div>
                 <li><NavLink to="/">home</NavLink></li>
                 <li><NavLink to="/playground">Playground</NavLink></li>
                 <li><a onClick={(e) => {
-                    e.preventDefault()
-                    logout(dispatch, history)
+                e.preventDefault()
+                logout()
+                history.push("/")
                 }} href="/logout">logout</a></li>
             </div>
         )

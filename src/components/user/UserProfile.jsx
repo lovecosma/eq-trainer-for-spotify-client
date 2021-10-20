@@ -1,18 +1,13 @@
 import React, { useContext, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom"
-import { getUser } from '../../actions/users'
-import { Redirect } from "react-router-dom"
-import {UserContext} from "../../App"
+import {UserContext} from "../../UserProvider"
+
 export default function UserProfile() {
     const {id} = useParams()
     const history = useHistory()
-    const {state} = useContext(UserContext)
-    const {user, loggedIn, requesting} = state
+    const {user, requesting} = useContext(UserContext)
     useEffect(() => {
-        let user_id = localStorage.getItem("user_id")
-        debugger
-        if(!!!user_id){
+        if(user.id !== Number(id)){
             history.push("/")
         }
     }, [])

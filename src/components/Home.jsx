@@ -1,34 +1,23 @@
-import React, {useEffect} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, {useEffect, useContext} from 'react'
 import M from 'materialize-css';
-// import SideNav from "./SideNav"
-import { getTopAlbumsArt } from "../actions/albums"
 import Loading from './Loading'
+import {UserContext} from "../UserProvider"
 
 function Home() {
-    const dispatch = useDispatch()
-    const {grid, carousel, requesting} = useSelector(({albumsReducer}) => {
-        return {
-            grid: albumsReducer.grid,
-            carousel: albumsReducer.carousel,
-            request: albumsReducer.requesting
-        }
-    })
-     useEffect(() => {
-        getTopAlbumsArt(dispatch)
+  
+    const {requestingAlbums, albums, getTopAlbumsArt} = useContext(UserContext)
+    const {grid, carousel} = albums
+
+    useEffect(() => {
+        getTopAlbumsArt()
+        setTimeout(() => {
+            let elems = document.querySelectorAll('.carousel');
+            M.Carousel.init(elems, {});
+        }, 300)
     }, [])
 
-    useEffect(
-        () => {
-            if(carousel.length !== 0){
-                let elems = document.querySelectorAll('.carousel');
-                let instances = M.Carousel.init(elems, {});
-            }
-        },
-        [carousel]
-    )
 
-    if(requesting){
+    if(requestingAlbums){
         return <div><Loading/></div>
     } else {
         return (

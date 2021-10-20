@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react'
-import { Switch, Route, useHistory } from "react-router-dom"
+import React from 'react'
+import { Switch, Route } from "react-router-dom"
 import NavBar from './components/NavBar'
 import "./App.css"
 import UserProfile from './components/user/UserProfile'
 import Login from "./components/Login"
 import LoginSuccess from "./components/LoginSuccess"
-import Logout from "./components/Logout"
 import Home from "./components/Home"
-export const UserContext = React.createContext()
 
 export function App () {
   
@@ -17,7 +15,7 @@ export function App () {
               <Switch>
                 <Route exact path='/login' component={Login} />
                 <Route exact path="/users/:id/initialize"><LoginSuccess/></Route>
-                <Route exact path="/client/:id"><UserProfile/></Route>
+                <Route exact path="/users/:id"><UserProfile/></Route>
                 <Route exact path='/' component={Home}/>
               </Switch>
            </div>

@@ -1,16 +1,20 @@
-import React, {useEffect, useReducer} from 'react'
-// import Loading from './Loading'
-// import SideNav from "./SideNav"
-import { Redirect, useHistory, useParams } from "react-router-dom"
-// import usersReducer from "../reducers/usersReducer"
-import { getUser } from '../actions/users'
-import {useDispatch} from "react-redux"
-
+import React, {useContext, useEffect, useReducer} from 'react'
+import {useHistory, useParams } from "react-router-dom"
+import {UserContext} from "../UserProvider"
 export function LoginSuccess(){
-     
+
+    const history = useHistory()
+   const {id} = useParams()
+    const {fetchUser} = useContext(UserContext)
+
+    useEffect(() => {
+        fetchUser(id, history)
+    }, [])
+ 
+
     return (
         <div>
-            {id ? <Redirect to={`/client/${id}`}/> : <h3>Loading</h3>}
+            <h1>Loading...</h1>
         </div>
     )
 }
