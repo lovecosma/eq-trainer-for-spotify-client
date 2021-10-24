@@ -12,15 +12,11 @@ export default function UserProfile() {
         }
     }, [])
   return (
-      <div>
-          {requesting ? <div>Loading</div> : 
           <div>
               <div>
                 <div>Hello, {user.display_name}</div>
                 {user.playlists ? user.playlists.map(playlist => <h4 key={playlist.id} >{playlist.name}</h4>) : <div></div>}
             </div>
         </div>
-        }
-      </div>
   )
 }

@@ -11,11 +11,11 @@ import "./App.css"
 ReactDOM.render(
   <React.StrictMode>
    <div>
-     <UserProvider>
-        <Router>
-          <App/>
-        </Router>
-      </UserProvider>
+      <Router>
+          <UserProvider>
+            <App/>
+          </UserProvider>
+      </Router>
    </div>
   </React.StrictMode>,
   document.getElementById('root')

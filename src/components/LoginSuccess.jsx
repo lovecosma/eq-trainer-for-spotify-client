@@ -1,14 +1,13 @@
-import React, {useContext, useEffect, useReducer} from 'react'
-import {useHistory, useParams } from "react-router-dom"
+import React, {useContext, useEffect} from 'react'
+import {useParams } from "react-router-dom"
 import {UserContext} from "../UserProvider"
 export function LoginSuccess(){
 
-    const history = useHistory()
    const {id} = useParams()
     const {fetchUser} = useContext(UserContext)
 
     useEffect(() => {
-        fetchUser(id, history)
+       fetchUser(id)
     }, [])
  
 

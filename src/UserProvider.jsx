@@ -1,10 +1,11 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router"
 
 
 export const UserContext = React.createContext()
 
 export const UserProvider = (props) => {
-
+    const history = useHistory()
     const [user, setUser] = useState({})
     const [requesting, setRequesting] = useState(true)
     const [loggedIn, setLoggedIn] = useState(false)
@@ -14,6 +15,42 @@ export const UserProvider = (props) => {
         grid: [],
         carousel: []
     })
+
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function checkCookie() {
+        let user = getCookie("username");
+        if (user !== "") {
+          alert("Welcome again " + user);
+          fetchUser()
+        } else {
+          user = prompt("Please enter your name:", "");
+          if (user !== "" && user !== null) {
+            setCookie("username", user, 365);
+          }
+        }
+      }
 
     async function getTopAlbumsArt(){
             setRequestingAlbums(true)
@@ -36,17 +73,20 @@ export const UserProvider = (props) => {
               return Promise.resolve("resolved")
         }
 
-    const fetchUser = (id, history) => {
+    async function fetchUser(id){
         setRequesting(true)
-        fetch(`/api/users/${id}`)
-        .then(resp => resp.json())
-        .then(userData => {
+        let resp
+        try{
+             resp = await fetch(`/api/users/${id}`)
+        } catch(e) {
+            return Promise.reject(e)
+        }
+        let userData = await resp.json()
             setUser({...userData})
             setLoggedIn(true)
             setRequesting(false)
             history.push(`/users/${id}`)
-        })
-        .catch(error => console.log(error))
+            return Promise.resolve("resolved")
     } 
 
     const logout = () => {
@@ -75,7 +115,10 @@ export const UserProvider = (props) => {
             fetchUser,
             getTopAlbumsArt,
             albums,
-            requestingAlbums
+            requestingAlbums,
+            setCookie,
+            getCookie, 
+            checkCookie
         }} >
             {props.children}
         </UserContext.Provider>
