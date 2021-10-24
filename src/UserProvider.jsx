@@ -15,11 +15,10 @@ export const UserProvider = (props) => {
         carousel: []
     })
 
-    function getTopAlbumsArt(){
+    async function getTopAlbumsArt(){
             setRequestingAlbums(true)
-            fetch("api/top_albums")
-            .then(resp => resp.json())
-            .then(albumsData => {
+            let resp = await fetch("api/top_albums")
+            let albumsData = await resp.json()
                 let carouselArr = []
                 let gridArr = []
                 let counter = 0
@@ -34,7 +33,7 @@ export const UserProvider = (props) => {
                     carousel: [...carouselArr]
                 })
               setRequestingAlbums(false)
-            })
+              return Promise.resolve("resolved")
         }
 
     const fetchUser = (id, history) => {

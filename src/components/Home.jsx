@@ -5,21 +5,20 @@ import {UserContext} from "../UserProvider"
 
 function Home() {
   
-    const {requestingAlbums, albums, getTopAlbumsArt} = useContext(UserContext)
+    const {albums, getTopAlbumsArt} = useContext(UserContext)
     const {grid, carousel} = albums
 
-    useEffect(() => {
-        getTopAlbumsArt()
-        setTimeout(() => {
+    async function fetchAlbums () {
+        await getTopAlbumsArt()
             let elems = document.querySelectorAll('.carousel');
             M.Carousel.init(elems, {});
-        }, 300)
+    }
+
+    useEffect(() => {
+        fetchAlbums()    
     }, [])
 
 
-    if(requestingAlbums){
-        return <div><Loading/></div>
-    } else {
         return (
             <div>
                 <section className="float-container gradient ">
@@ -62,6 +61,5 @@ function Home() {
             </div>
         )
     }
-}
 
 export default Home
