@@ -1,16 +1,13 @@
-import React from "react";
-import { Redirect, Route, useParams } from "react-router-dom";
-import { useSelector } from "react-redux"
-// function ProtectedRoute({ component: Component}) {
-//     const {id} = useParams()
-//     const {user} = useSelector(({usersReducer}) => {
-//         return{
-//             user: usersReducer.user
-//         }
-//     })
-//     return (
-//         <div></div>
-//     )
-// }
+import React, {useContext} from "react";
+import { Redirect } from "react-router-dom";
+import { UserContext } from "../UserProvider";
+function ProtectedRoute({ component: Component}) {
+    const {loggedIn} = useContext(UserContext)
+    if(loggedIn){
+        return <Component/>
+    } else {
+        return <Redirect to="/"/>
+    }
+}
 
-// export default ProtectedRoute;
+export default ProtectedRoute;

@@ -9,7 +9,7 @@ export default function NavBar() {
     const {loggedIn, logout} = useContext(UserContext)
 
     return (
-        <div>
+        <div className="nav-container">
             <nav>
                 {loggedIn ? <UserLinks history={history} logout={logout}/> : <GuestLinks/>}
             </nav>

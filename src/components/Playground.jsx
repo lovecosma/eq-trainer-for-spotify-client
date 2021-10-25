@@ -1,35 +1,32 @@
-import React, { Component } from 'react'
-import {connect} from "react-redux"
-import fetchUserTracks from "../actions/fetchUserTracks"
-import EQUI from "./EQUI"
-import * as Tone from "tone"
-import { Silver } from 'react-dial-knob'
+import React, { useContext, useEffect, useState } from 'react'
+import M from "materialize-css"
+import "./Playground.css"
+import {UserContext} from "../UserProvider"
+import { useHistory, Redirect } from 'react-router-dom'
 
-export class Playground extends Component {
+export default function Playground() {
+    console.log("Playground rendered");
+    const [currentTrack, setCurrentTrack] = useState({})
+    const [playlists, setPlaylists] = useState()
+    const {user, loggedIn} = useContext(UserContext)
+    const history = useHistory()
+    // var item = items[Math.floor(Math.random()*items.length)];
+    useEffect(() => {
+        let elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems, {});
+    }, [])
 
-    state={
-        track: {}
-    }
- 
-    componentDidMount(){
-        if(this.props.user.id){
-        this.props.fetchUserTracks(this.props.user)
-        }
-        console.log(this.state);
-    }
-
-
-    render() {
-        return <div>Hello</div>
-    }
+        return (
+            <div className="center container">
+                <h1>Welcome, let's start training</h1>
+                <div  id="playlist-selection">
+                    <div class="input-field col s12">
+                        <select>
+                            {user.playlists.map(playlist => <option value={playlist.id}>{playlist.name}</option>)} 
+                        </select>
+                        <label>Choose a playlist</label>
+                    </div>
+                </div>
+            </div>
+        )
 }
-
-const mapStateToProps = ({usersReducer, tracksReducer}) => {
-    return {
-        user: usersReducer.user, 
-        tracks: tracksReducer.tracks,
-        requesting: tracksReducer.requesting
-    }
-}
-
-export default connect(mapStateToProps, {fetchUserTracks})(Playground)
