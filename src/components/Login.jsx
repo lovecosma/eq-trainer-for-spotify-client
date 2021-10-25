@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import SideNav from "./SideNav"
 
 export class Login extends Component {
 

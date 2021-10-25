@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Loading from "./Loading"
-import SideNav from './SideNav'
 import M from 'materialize-css';
 import {Redirect} from "react-router"
 import Playground from "./Playground"
