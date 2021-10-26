@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router"
 
 
@@ -16,13 +16,33 @@ export const UserProvider = (props) => {
         carousel: []
     })
 
+    
+
+  // useEffect(() => {
+  //   let logged = localStorage.getItem("loggedIn")
+  //   if(logged){
+  //     let user_id = JSON.parse(getCookie("user"))
+  //     if(user_id !== ""){
+  //       setRequesting(true)
+  //       fetch(`/api/users/${Number(user_id)}`)
+  //       .then(resp => resp.json())
+  //       .then(userData => {
+  //           setUser({...userData})
+  //           setLoggedIn(true)
+  //           setRequesting(false)
+  //           localStorage.setItem("loggedIn", JSON.stringify(true))
+  //       })
+  //     }
+  //   }
+  // }, [setUser, setLoggedIn, setRequesting])
+
+
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         let expires = "expires="+ d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
       }
-
       function getCookie(cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
@@ -40,16 +60,12 @@ export const UserProvider = (props) => {
       }
 
       function checkCookie() {
-        let user = getCookie("username");
-        if (user !== "") {
-          alert("Welcome again " + user);
-          fetchUser()
-        } else {
-          user = prompt("Please enter your name:", "");
-          if (user !== "" && user !== null) {
-            setCookie("username", user, 365);
-          }
-        }
+        // let user_id = JSON.parse(getCookie("user"));
+        // if (user !== "") {
+        //   fetchUser(user.id)
+        // } else {
+        //   history.push("/")
+        // }
       }
 
     async function getTopAlbumsArt(){
@@ -85,8 +101,9 @@ export const UserProvider = (props) => {
             setUser({...userData})
             setLoggedIn(true)
             setRequesting(false)
-            history.push(`/users/${id}`)
-            return Promise.resolve("resolved")
+            setCookie("user", JSON.stringify(userData.id), 365)
+            localStorage.setItem("loggedIn", JSON.stringify(true))
+             return Promise.resolve("resolved")
     } 
 
     const logout = () => {
@@ -103,6 +120,8 @@ export const UserProvider = (props) => {
         .then(json => {
             setUser({})
             setLoggedIn(false)
+            setCookie("user", "")
+            localStorage.setItem("loggedIn", false)
         })
 }
 

@@ -6,12 +6,12 @@ import UserLinks from "./user/UserLinks"
 import GuestLinks from "./GuestLinks"
 export default function NavBar() {
     const history = useHistory()
-    const {loggedIn, logout} = useContext(UserContext)
+    const {loggedIn, logout, user} = useContext(UserContext)
 
     return (
         <div className="nav-container">
             <nav>
-                {loggedIn ? <UserLinks history={history} logout={logout}/> : <GuestLinks/>}
+                {loggedIn ? <UserLinks history={history} logout={logout} user={user}/> : <GuestLinks/>}
             </nav>
         </div>
     )

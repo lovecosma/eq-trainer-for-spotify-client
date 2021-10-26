@@ -1,13 +1,20 @@
 import React, {useContext, useEffect} from 'react'
-import {useParams } from "react-router-dom"
+import {useParams, useHistory } from "react-router-dom"
 import {UserContext} from "../UserProvider"
 export function LoginSuccess(){
 
-   const {id} = useParams()
-    const {fetchUser} = useContext(UserContext)
+   
+    const {id} = useParams()
+    const {fetchUser, requesting} = useContext(UserContext)
+    const history = useHistory()
+
+    const fetchExistingUser = async () => {
+        await fetchUser(Number(id))
+        history.push(`/playground`)
+    }
 
     useEffect(() => {
-       fetchUser(id)
+       fetchExistingUser()
     }, [])
  
 

@@ -5,13 +5,12 @@ import {UserContext} from "../UserProvider"
 import { useHistory, Redirect } from 'react-router-dom'
 
 export default function Playground() {
-    console.log("Playground rendered");
     const [currentTrack, setCurrentTrack] = useState({})
     const [playlists, setPlaylists] = useState()
     const {user, loggedIn} = useContext(UserContext)
     const history = useHistory()
-    // var item = items[Math.floor(Math.random()*items.length)];
-    useEffect(() => {
+
+     useEffect(() => {
         let elems = document.querySelectorAll('select');
         M.FormSelect.init(elems, {});
     }, [])
@@ -22,7 +21,7 @@ export default function Playground() {
                 <div  id="playlist-selection">
                     <div class="input-field col s12">
                         <select>
-                            {user.playlists.map(playlist => <option value={playlist.id}>{playlist.name}</option>)} 
+                            {user.playlists.map(playlist => <option key={playlist.id} value={playlist.id}>{playlist.name}</option>)} 
                         </select>
                         <label>Choose a playlist</label>
                     </div>

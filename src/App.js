@@ -10,6 +10,7 @@ import { UserContext } from './UserProvider'
 import Playground from "./components/Playground"
 import ProtectedRoute from './components/ProtectedRoute'
 export function App () {
+  
       return (
            <div>
               <NavBar/>
@@ -20,6 +21,7 @@ export function App () {
                 <Route exact path="/playground" ><ProtectedRoute component={Playground}/></Route>
                 <Route exact path='/' component={Home}/>
               </Switch>
+
            </div>
           )
   }
