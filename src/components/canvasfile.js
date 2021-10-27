@@ -1,38 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import M from "materialize-css"
-import "./Playground.css"
-import {UserContext} from "../UserProvider"
-import { useHistory, Redirect } from 'react-router-dom'
+import React from 'react'
 
-export default function Playground() {
-    const [currentTrack, setCurrentTrack] = useState({})
-    const [tracks, setTracks] = useState([])
-    const [playlistId, setPlaylistId] = useState(null)
-    const {user, loggedIn} = useContext(UserContext)
-    const history = useHistory()
-
-    
-
-     useEffect(() => {
-        let elems = document.querySelectorAll('select');
-        M.FormSelect.init(elems, {});
-
-    }, [tracks])
-
-    const changePlaylist = (e) => {
-       setPlaylistId(Number(e.target.value))
-    }
-    const fetchTracks = async (e) => {
-        e.preventDefault()
-        let resp = await fetch(`/api/playlists/${playlistId}`)
-        let playlistData = await resp.json()
-        setTracks([...playlistData.tracks])
-    }
-
-        return (
-            <div className="container">
-                <h1>Welcome, let's start training</h1>
-                <form  id="playlist-selection" onSubmit={fetchTracks}>
+export default function canvasfile() {
+    return (
+        <div>
+            <form  id="playlist-selection" onSubmit={fetchTracks}>
                     <div class="input-field col s12">
                         <select onChange={changePlaylist}>
                             <option value="" selected disabled hidden>Choose a playlist</option>
@@ -52,6 +23,6 @@ export default function Playground() {
                     </div>
                     <button type="submit">Select T</button>
                 </form>
-            </div>
-        )
+        </div>
+    )
 }

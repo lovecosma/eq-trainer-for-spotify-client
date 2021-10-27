@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from "react-redux"
 import M from 'materialize-css';
-import Loading from './Loading'
 import {getTopAlbumsArt} from "../actions/albums"
 function Home() {
   
@@ -14,15 +13,15 @@ function Home() {
 
     const dispatch = useDispatch()
 
-    async function fetchAlbums () {
-        await getTopAlbumsArt(dispatch)
+    
+    useEffect(() => {
+        async function fetchAlbums () {
+            await getTopAlbumsArt(dispatch)
             let elems = document.querySelectorAll('.carousel');
             M.Carousel.init(elems, {});
-    }
-
-    useEffect(() => {
+        }
         fetchAlbums()    
-    }, [])
+    }, [dispatch])
 
 
         return (
@@ -36,7 +35,7 @@ function Home() {
                         </div>
                         <div>
                             <div className="carousel" style={{width: "50%"}}>
-                                {carousel.map(album => <a key={album.id} href="/" className="carousel-item" ><img src={album.image}/></a>)}
+                                {carousel.map(album => <a key={album.id} href="/" className="carousel-item" ><img alt={"New Release Album Art"} src={album.image}/></a>)}
                             </div>
                         </div>
                     </section>

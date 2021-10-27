@@ -1,17 +1,13 @@
-import React, {useContext, useEffect} from 'react'
-import { Switch, Route, Redirect } from "react-router-dom"
-import NavBar from './components/NavBar'
+import React from 'react'
+import { Switch, Route } from "react-router-dom"
+import NavBar from './containers/NavBar'
 import "./App.css"
-import UserProfileContainer from './components/user/UserProfileContainer'
+import UserProfileContainer from './containers/UserProfileContainer'
 import Login from "./components/Login"
-import LoginSuccess from "./components/LoginSuccess"
 import Home from "./components/Home"
-import Playground from "./components/Playground"
+import PlaygroundContainer from "./containers/PlaygroundContainer"
 import ProtectedRoute from './components/ProtectedRoute'
-import {useHistory} from "react-router-dom"
-import {useDispatch, useSelector} from "react-redux"
-import {checkCookie} from "./actions/cookies"
-import {login} from "./actions/user"
+
 export function App () {
   
       return (
@@ -19,8 +15,8 @@ export function App () {
               <NavBar/>
               <Switch>
                 <Route exact path='/login' component={Login} />
-                <Route exact path="/users/:id"><UserProfileContainer/></Route>
-                <Route exact path="/playground" ><ProtectedRoute component={Playground}/></Route>
+                <Route exact path="/users/:id"><ProtectedRoute component={UserProfileContainer}/></Route>
+                <Route exact path="/users/:id/playground" ><ProtectedRoute component={PlaygroundContainer}/></Route>
                 <Route exact path='/' component={Home}/>
               </Switch>
            </div>
