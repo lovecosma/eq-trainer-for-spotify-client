@@ -1,15 +1,21 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useEffect} from 'react'
+import {useSelector, useDispatch} from "react-redux"
 import M from 'materialize-css';
 import Loading from './Loading'
-import {UserContext} from "../UserProvider"
-
+import {getTopAlbumsArt} from "../actions/albums"
 function Home() {
   
-    const {albums, getTopAlbumsArt} = useContext(UserContext)
-    const {grid, carousel} = albums
+    const {grid, carousel} = useSelector(({albumsReducer}) => {
+        return {
+            grid: albumsReducer.grid,
+           carousel: albumsReducer.carousel
+        }
+    })
+
+    const dispatch = useDispatch()
 
     async function fetchAlbums () {
-        await getTopAlbumsArt()
+        await getTopAlbumsArt(dispatch)
             let elems = document.querySelectorAll('.carousel');
             M.Carousel.init(elems, {});
     }

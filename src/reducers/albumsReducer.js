@@ -13,13 +13,13 @@ const albumsReducer = (state = {tracks: [], requesting: true, carousel: [], grid
             requesting: false,
             tracks: [...action.tracks]
         }
-        case "START_REQUESTING_TOP_ALBUMS_ART":
+        case "REQUESTING_TOP_ALBUMS":
             return {
                 ...state,
                 requesting: true
             }
     
-        case 'ADD_ALBUMS_ART':
+        case 'ADD_TOP_ALBUMS':
             let carousel = []
             let grid = []
             let counter = 0

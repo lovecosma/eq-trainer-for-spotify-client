@@ -7,7 +7,7 @@ function usersReducer(state = {loggedIn: false, user: {},  requesting: true} , a
             requesting: true
         }
     
-    case 'START_LOGGING_OUT':
+    case 'REQUESTING_LOGOUT':
         return {
             ...state,
             requesting: true
@@ -24,11 +24,11 @@ function usersReducer(state = {loggedIn: false, user: {},  requesting: true} , a
             ...state,
             loggedIn: !state.loggedIn
         }   
-        case 'LOGOUT':
-        return {
-            loggedIn: false,
-            user: {},
-            requesting: false
+    case 'LOGOUT':
+    return {
+        loggedIn: false,
+        user: {},
+        requesting: false
     } 
       default:
         return state;

@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
 
-export default function UserLinks({logout, history, user}) {
+export default function UserLinks({logout, history, dispatch}) {
   
     return (
         <div class="nav-wrapper">
@@ -9,10 +9,11 @@ export default function UserLinks({logout, history, user}) {
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><NavLink to="/">home</NavLink></li>
             <li><NavLink to={`/playground`}>Playground</NavLink></li>
-            <li><a onClick={(e) => {
+            <li><a onClick={async (e) => {
                 e.preventDefault()
-                logout()
+                await logout(dispatch)
                 history.push("/")
+                Promise.resolve("resolved")
                 }} href="/logout">logout</a>
             </li>
         </ul>
