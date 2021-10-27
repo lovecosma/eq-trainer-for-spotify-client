@@ -39,7 +39,7 @@ function Home() {
                             <h5 >
                                 Login with Spotify to get started.
                             </h5>
-                            <form action="http://localhost:3001/login" method="get" style={{padding: "25px"}}>
+                            <form action="http://localhost:3001/login_with_spotify" method="get" style={{padding: "25px"}}>
                                 <button id="btn" type="submit" > Login with Spotify </button> 
                             </form>
                         </div>
@@ -51,7 +51,7 @@ function Home() {
                             </div>
                             <div className="float-child2" style={{marginLeft: "200px"}}>
                                 <h1>Tune into to the <b className="green-text">best</b> to be the <b className="green-text">best</b></h1>
-                                <form action="http://localhost:3001/login" method="get" style={{padding: "25px"}}>
+                                <form action="http://localhost:3001/login_with_spotify" method="get" style={{padding: "25px"}}>
                                     <button id="btn" type="submit" style={{width: "300px"}}>Get started</button> 
                                 </form>
                                 

@@ -1,19 +1,37 @@
 import React, {useContext, useEffect} from 'react'
 import {useParams, useHistory } from "react-router-dom"
-import {UserContext} from "../UserProvider"
+
 export function LoginSuccess(){
 
    
     const {id} = useParams()
-    const {fetchUser, requesting} = useContext(UserContext)
     const history = useHistory()
 
     const fetchExistingUser = async () => {
-        await fetchUser(Number(id))
-        history.push(`/playground`)
+        // history.push(`/playground`)
     }
 
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
     useEffect(() => {
+        let userCookie = getCookie("user")
+        if(userCookie !== ""){
+            let user = JSON.parse(userCookie)
+            debugger
+        }
        fetchExistingUser()
     }, [])
  
