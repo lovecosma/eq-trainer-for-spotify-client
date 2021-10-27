@@ -9,6 +9,7 @@ export default function PlaygroundContainer({dispatch, user}) {
     const [currentTrack, setCurrentTrack] = useState({})
     const [tracks, setTracks] = useState([])
     const [playlistId, setPlaylistId] = useState(null)
+    const [playlists, setPlaylists] = useState([])
     const history = useHistory()
     
 

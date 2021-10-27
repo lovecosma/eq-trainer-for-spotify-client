@@ -17,7 +17,7 @@ export default function NavBar() {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    
+    console.log(loggedIn);
     return (
         <div className="nav-container">
             <nav>

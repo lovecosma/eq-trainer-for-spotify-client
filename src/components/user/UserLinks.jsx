@@ -11,8 +11,8 @@ export default function UserLinks({logout, history, dispatch}) {
             <li><NavLink to={`/playground`}>Playground</NavLink></li>
             <li><a onClick={async (e) => {
                 e.preventDefault()
-                await logout(dispatch)
                 history.push("/")
+                await logout(dispatch)
                 Promise.resolve("resolved")
                 }} href="/logout">logout</a>
             </li>
