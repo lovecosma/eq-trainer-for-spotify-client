@@ -16,26 +16,6 @@ export const UserProvider = (props) => {
         carousel: []
     })
 
-    
-
-  // useEffect(() => {
-  //   let logged = localStorage.getItem("loggedIn")
-  //   if(logged){
-  //     let user_id = JSON.parse(getCookie("user"))
-  //     if(user_id !== ""){
-  //       setRequesting(true)
-  //       fetch(`/api/users/${Number(user_id)}`)
-  //       .then(resp => resp.json())
-  //       .then(userData => {
-  //           setUser({...userData})
-  //           setLoggedIn(true)
-  //           setRequesting(false)
-  //           localStorage.setItem("loggedIn", JSON.stringify(true))
-  //       })
-  //     }
-  //   }
-  // }, [setUser, setLoggedIn, setRequesting])
-
 
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
@@ -101,8 +81,8 @@ export const UserProvider = (props) => {
             setUser({...userData})
             setLoggedIn(true)
             setRequesting(false)
-            setCookie("user", JSON.stringify(userData.id), 365)
-            localStorage.setItem("loggedIn", JSON.stringify(true))
+            localStorage.setItem("user", JSON.stringify(userData))
+            localStorage.setItem("loggedIn", true)
              return Promise.resolve("resolved")
     } 
 
@@ -120,7 +100,7 @@ export const UserProvider = (props) => {
         .then(json => {
             setUser({})
             setLoggedIn(false)
-            setCookie("user", "")
+            localStorage.setItem("user", "")
             localStorage.setItem("loggedIn", false)
         })
 }
@@ -137,7 +117,9 @@ export const UserProvider = (props) => {
             requestingAlbums,
             setCookie,
             getCookie, 
-            checkCookie
+            checkCookie, 
+            setUser,
+            setLoggedIn
         }} >
             {props.children}
         </UserContext.Provider>

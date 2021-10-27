@@ -6,9 +6,9 @@ import UserProfile from './components/user/UserProfile'
 import Login from "./components/Login"
 import LoginSuccess from "./components/LoginSuccess"
 import Home from "./components/Home"
-import { UserContext } from './UserProvider'
 import Playground from "./components/Playground"
 import ProtectedRoute from './components/ProtectedRoute'
+
 export function App () {
   
       return (
