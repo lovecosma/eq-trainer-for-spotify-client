@@ -22,11 +22,10 @@ export function App () {
     !!userData ? login(dispatch, userData) : history.push("/login")
 }, [dispatch, history])
 
-  
       return (
            <div>
               <NavBar/>
-              <Switch>
+                <Switch>
                 <Route exact path='/login' component={Login} />
                 <Route exact path="/users/:id"><ProtectedRoute component={UserProfileContainer}/></Route>
                 <Route exact path="/users/:id/playground" ><ProtectedRoute component={PlaygroundContainer}/></Route>
