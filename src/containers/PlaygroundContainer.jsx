@@ -14,11 +14,15 @@ export default function PlaygroundContainer({dispatch, user}) {
     
 
      useEffect(() => {
-        fetchPlaylists(dispatch, user)
-        let elems = document.querySelectorAll('select');
-        M.FormSelect.init(elems, {});
+        const fetchUserPlaylists = async () => {
+            await fetchPlaylists(dispatch, user)
+            let elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems, {});
+        }
+        fetchUserPlaylists()
+       
 
-    }, [tracks])
+    }, [user, dispatch])
 
     const changePlaylist = (e) => {
        setPlaylistId(Number(e.target.value))

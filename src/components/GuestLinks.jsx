@@ -8,7 +8,7 @@ export default function GuestLinks() {
         <NavLink to="/" className="brand-logo">EQ-ify</NavLink>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li><NavLink to="/">home</NavLink></li>
-                <li><a href="http://localhost:3001/login_with_spotify">login</a></li>
+                <li><a href="http://localhost:3001/api/login_with_spotify">login</a></li>
             </ul>
       </div>
     )

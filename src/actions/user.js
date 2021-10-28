@@ -6,7 +6,7 @@ export const login = (dispatch, user) => {
 
 export const logout = async (dispatch) => {
     dispatch({type: "REQUESTING_LOGOUT"})
-   await fetch("http://localhost:3001/logout", {
+   await fetch("/api/logout", {
         method: "POST",
         headers: {
             "Accept": "application/json",

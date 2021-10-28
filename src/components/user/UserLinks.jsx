@@ -1,14 +1,14 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
 
-export default function UserLinks({logout, history, dispatch}) {
+export default function UserLinks({logout, history, dispatch, user}) {
   
     return (
         <div class="nav-wrapper">
         <NavLink to="/" className="brand-logo">EQ-ify</NavLink>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><NavLink to="/">home</NavLink></li>
-            <li><NavLink to={`/playground`}>Playground</NavLink></li>
+            <li><NavLink to={`/users/${user.spotify_id}/playground`}>Playground</NavLink></li>
             <li><a onClick={async (e) => {
                 e.preventDefault()
                 history.push("/")

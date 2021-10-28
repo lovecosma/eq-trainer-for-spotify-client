@@ -8,7 +8,7 @@ import {login} from "../actions/user"
 function ProtectedRoute({ component: Component}) {
 
     const { id } = useParams()
-
+    const dispatch  = useDispatch()
     const {loggedIn, requesting, user} = useSelector(({usersReducer}) => {
         return {
             loggedIn: usersReducer.loggedIn,
@@ -17,16 +17,6 @@ function ProtectedRoute({ component: Component}) {
         }
     })
 
-    const history = useHistory()
-    const dispatch = useDispatch()
-
-  useEffect(() => {
-    if(!loggedIn){
-        let userData = checkCookie()
-        !!userData ? login(dispatch, userData) : history.push("/login")
-    }
-  }, [dispatch, history, loggedIn])
- 
     if(requesting){
         return <div>Loading</div>
     } else {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Switch, Route } from "react-router-dom"
 import NavBar from './containers/NavBar'
 import "./App.css"
@@ -7,8 +7,21 @@ import Login from "./components/Login"
 import Home from "./components/Home"
 import PlaygroundContainer from "./containers/PlaygroundContainer"
 import ProtectedRoute from './components/ProtectedRoute'
+import {useHistory} from "react-router-dom"
+import {useDispatch} from "react-redux"
+import {checkCookie} from "./actions/cookies"
+import {login} from "./actions/user"
 
 export function App () {
+
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  useEffect(() => {
+    let userData = checkCookie()
+    !!userData ? login(dispatch, userData) : history.push("/login")
+}, [dispatch, history])
+
   
       return (
            <div>
