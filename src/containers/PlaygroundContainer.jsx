@@ -11,10 +11,8 @@ import TrackSelect from "../components/TrackSelect"
 export default function PlaygroundContainer({dispatch, user}) {
 
     const [currentTrack, setCurrentTrack] = useState({})
-    const [playlistState, setPlaylistState] = useState({
-        playlistId: "",
-        playlistSet: false
-    })
+    const [currentPlaylist, setCurrentPlaylist] = useState({})
+    const [playlistId, setPlaylistId] = useState("")
     const history = useHistory()
     const {playlists, requesting, tracks} = useSelector(({playlistsReducer}) => {
         return {
@@ -36,13 +34,11 @@ export default function PlaygroundContainer({dispatch, user}) {
     }, [user, dispatch])
 
     const changePlaylist = async (e) => {
-        setPlaylistState({
-            playlistId: e.target.value,
-            playlistSet: true
-        })
-      await fetchPlaylist(dispatch, user, playlistState.playlistId)
-      let elems = document.querySelectorAll('select');
-      M.FormSelect.init(elems, {});
+       setPlaylistId(e.target.value)
+
+      await fetchPlaylist(dispatch, playlistId)
+    //   let elems = document.querySelectorAll('select');
+    //   M.FormSelect.init(elems, {});
     }
 
     const changeTrack = (e) => {
@@ -52,8 +48,8 @@ export default function PlaygroundContainer({dispatch, user}) {
         return (
             <div className="container">
                 <h1>Welcome, let's start training</h1>
-                {requesting ? <div>Loading Playlists from Spotify</div> : <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>}
-                {playlistState.playlistSet && !requesting ? <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
+                {requesting ? <div></div> : <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>}
+                {!!playlistId.id && !requesting ? <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
             </div>
         )
 }
