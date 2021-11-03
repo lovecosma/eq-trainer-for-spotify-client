@@ -7,7 +7,7 @@ export default function TrackSelect({tracks, changeTrack}) {
             <option value="" disabled selected>Choose your option</option>
             {tracks.map(track => <option value={track.id}>{track.name}</option> )}
             </select>
-            <label>Select from your playlists</label>
+            <label>Select a track</label>
         </div>  
     )
 }

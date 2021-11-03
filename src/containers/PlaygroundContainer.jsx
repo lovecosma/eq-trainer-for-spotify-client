@@ -10,11 +10,8 @@ import TrackSelect from "../components/TrackSelect"
 
 export default function PlaygroundContainer({dispatch, user}) {
 
-    const [currentTrack, setCurrentTrack] = useState({})
-    const [currentPlaylist, setCurrentPlaylist] = useState({})
-    const [playlistId, setPlaylistId] = useState("")
     const history = useHistory()
-    const {playlists, requesting, playlist} = useSelector(({playlistsReducer}) => {
+    const {playlists, playlist} = useSelector(({playlistsReducer}) => {
         return {
             playlists: playlistsReducer.playlists,
             requesting: playlistsReducer.requesting,
@@ -30,13 +27,19 @@ export default function PlaygroundContainer({dispatch, user}) {
         }
         fetchUserPlaylists()
        
-
+        // return () => {
+        //     let elems = document.querySelectorAll('select');
+        //     for(elem of elems){
+        //       let  instance = M.FormSelect.getInstance(elem);
+        //         instance.destroy();
+        //     }
+        // }
     }, [user, dispatch])
 
     const changePlaylist = async (e) => {
       await fetchPlaylist(dispatch, e.target.value)
-    //   let elems = document.querySelectorAll('select');
-    //   M.FormSelect.init(elems, {});
+      let elems = document.querySelectorAll('select');
+      M.FormSelect.init(elems, {});
     }
 
     const changeTrack = (e) => {
@@ -47,7 +50,8 @@ export default function PlaygroundContainer({dispatch, user}) {
             <div className="container">
                 <h1>Welcome, let's start training</h1>
                 <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>
-                {playlist.id ? playlist.tracks.map(track => <h1>{track.name}</h1>) : <div></div>}
+                <br/>
+                {playlist.id ? <TrackSelect tracks={playlist.tracks} changeTrack={changeTrack}/> : <div></div>}
             </div>
         )
 }
