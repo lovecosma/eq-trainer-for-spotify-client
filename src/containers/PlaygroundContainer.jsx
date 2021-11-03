@@ -14,11 +14,11 @@ export default function PlaygroundContainer({dispatch, user}) {
     const [currentPlaylist, setCurrentPlaylist] = useState({})
     const [playlistId, setPlaylistId] = useState("")
     const history = useHistory()
-    const {playlists, requesting, tracks} = useSelector(({playlistsReducer}) => {
+    const {playlists, requesting, playlist} = useSelector(({playlistsReducer}) => {
         return {
             playlists: playlistsReducer.playlists,
             requesting: playlistsReducer.requesting,
-            tracks: playlistsReducer.tracks
+            playlist: playlistsReducer.playlist
         }
     })
 
@@ -34,9 +34,7 @@ export default function PlaygroundContainer({dispatch, user}) {
     }, [user, dispatch])
 
     const changePlaylist = async (e) => {
-       setPlaylistId(e.target.value)
-
-      await fetchPlaylist(dispatch, playlistId)
+      await fetchPlaylist(dispatch, e.target.value)
     //   let elems = document.querySelectorAll('select');
     //   M.FormSelect.init(elems, {});
     }
@@ -48,8 +46,8 @@ export default function PlaygroundContainer({dispatch, user}) {
         return (
             <div className="container">
                 <h1>Welcome, let's start training</h1>
-                {requesting ? <div></div> : <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>}
-                {!!playlistId.id && !requesting ? <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
+                <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>
+                {playlist.id ? playlist.tracks.map(track => <h1>{track.name}</h1>) : <div></div>}
             </div>
         )
 }

@@ -6,7 +6,7 @@ export const fetchPlaylists = async (dispatch, user) => {
     Promise.resolve("resolved")
 }
 
-export const fetchPlaylist = async (dispatch, user, playlistId) => {
+export const fetchPlaylist = async (dispatch, playlistId) => {
     dispatch({type: "REQUESTING_PLAYLIST"})
     let resp = await fetch(`/api/playlists/${playlistId}`)
     let playlist = await resp.json()
