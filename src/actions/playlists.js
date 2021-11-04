@@ -10,6 +10,7 @@ export const fetchPlaylist = async (dispatch, playlistId) => {
     dispatch({type: "REQUESTING_PLAYLIST"})
     let resp = await fetch(`/api/playlists/${playlistId}`)
     let playlist = await resp.json()
-    dispatch({type: "ADD_PLAYLIST", playlist})
+    let tracks = playlist.tracks.filter(track => track.preview_url !== null )
+    dispatch({type: "ADD_PLAYLIST", tracks})
     Promise.resolve("resolved")
 }

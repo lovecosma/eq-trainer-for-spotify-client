@@ -1,4 +1,4 @@
-const playlistsReducer = (state = {playlists: [], playlist: {}, requesting: true, tracks: []}, action) => {
+const playlistsReducer = (state = {playlists: [], tracks: [], requesting: true, tracks: []}, action) => {
     switch(action.type){
         case "REQUESTING_PLAYLISTS":
             return {
@@ -20,7 +20,7 @@ const playlistsReducer = (state = {playlists: [], playlist: {}, requesting: true
             return {
                 ...state,
                 requesting: false,
-                playlist: {...action.playlist}
+                tracks: [...action.tracks]
             }
         default: 
             return state
