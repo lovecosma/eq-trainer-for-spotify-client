@@ -13,7 +13,7 @@ export default function PlaygroundContainer({dispatch, user}) {
 
     const history = useHistory()
     const [playlistSet, setPlaylistSet] = useState(false)
-    const [trackSet, setTrackSet] = useState("")
+    const [currentTrack, setCurrentTrack] = useState("")
     const {playlists, tracks} = useSelector(({playlistsReducer}) => {
         return {
             playlists: playlistsReducer.playlists,
@@ -31,15 +31,17 @@ export default function PlaygroundContainer({dispatch, user}) {
     }, [user, dispatch])
 
     const changePlaylist = async (e) => {
+        setCurrentTrack({})
+        setPlaylistSet(false)
       await fetchPlaylist(dispatch, e.target.value)
       setPlaylistSet(true)
     }
 
     const changeTrack = (e) => {
-        fetch(`api/tracks/${e.target.value}`)
+        fetch(`/api/tracks/${e.target.value}`)
         .then(resp => resp.json())
         .then(trackData => {
-            debugger
+            setCurrentTrack({...trackData})
         })
 
     }
@@ -50,7 +52,7 @@ export default function PlaygroundContainer({dispatch, user}) {
                 <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>
                 <br/>
                 {playlistSet ? <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
-                {trackSet ? <PlaygroundTrackCard/> : <div></div> }
+                {currentTrack.id ? <PlaygroundTrackCard track={currentTrack}/> : <div></div> }
             </div>
         )
 }
