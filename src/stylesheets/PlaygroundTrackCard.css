@@ -1,4 +1,7 @@
-
+#track-ui{
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .eq-ui{
     display: flex;

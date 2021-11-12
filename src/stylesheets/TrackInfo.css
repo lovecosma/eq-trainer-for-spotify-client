@@ -1,10 +1,12 @@
 .track-info{
     display: flex;
-    justify-content: left
+    justify-content: space-evenly;
+    width: 50%;
 }
 
 .track-details{
-    margin-left: 50px
+    margin-left: 10%;
+    width: 50%;
 }
 
 p{
