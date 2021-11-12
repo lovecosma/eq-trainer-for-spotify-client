@@ -11,6 +11,7 @@ import {useHistory} from "react-router-dom"
 import {useDispatch} from "react-redux"
 import {checkCookie} from "./actions/cookies"
 import {login} from "./actions/user"
+import Loading from "./components/Loading"
 
 export function App () {
 

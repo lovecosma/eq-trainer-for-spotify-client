@@ -19,7 +19,6 @@ const FrequencyBar = (props) => {
         for(let i = 0; i < 5; i++){
             waves[i] = new Wave(p5.random(20, 50), p5.random(100, 500), p5.random(p5.TWO_PI), p5)
             waves2[i] = new Wave(p5.random(20, 50), p5.random(100, 500), p5.random(p5.TWO_PI), p5)
-
         }
     };
 
