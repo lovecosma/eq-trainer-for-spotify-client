@@ -1,12 +1,11 @@
-#track-ui{
-    display: flex;
-    justify-content: left;
-}
+
 
 .eq-ui{
-    width: 75%
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .track-info{
-    width: 25%
+    display: flex;
+    justify-content: space-between;
 }

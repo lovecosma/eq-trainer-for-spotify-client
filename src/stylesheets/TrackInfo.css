@@ -1,0 +1,12 @@
+.track-info{
+    display: flex;
+    justify-content: left
+}
+
+.track-details{
+    margin-left: 50px
+}
+
+p{
+    font-size: xx-large;
+}
