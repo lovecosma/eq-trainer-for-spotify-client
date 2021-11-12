@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react'
 import M from "materialize-css"
-import "./Playground.css"
+import "../stylesheets/Playground.css"
 import { useHistory} from 'react-router-dom'
 import {fetchPlaylists, fetchPlaylist} from "../actions/playlists"
 import {useSelector} from "react-redux"

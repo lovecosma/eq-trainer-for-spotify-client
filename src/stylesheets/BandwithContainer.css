@@ -1,0 +1,19 @@
+.slider-container{
+    display: flex;
+    width: 100px;
+    justify-content: space-evenly;
+}
+
+.eq-child-1{
+    display: flex;
+    justify-content: space-evenly;
+}
+.eq-child-2{
+    display: flex;
+    justify-content: space-evenly;
+    width: 75%;
+}
+
+.eq-input-field{
+    width: 100px
+}

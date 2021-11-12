@@ -1,3 +1,15 @@
-.range-field{
-   background-color: black;
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
 }
+
+#equi-container{
+    margin-right: auto;
+    margin-top: 2%;
+    margin-left: 2%
+}
+
