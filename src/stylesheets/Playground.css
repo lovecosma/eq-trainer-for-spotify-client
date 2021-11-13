@@ -22,63 +22,7 @@ input{
     color: black
 }
 
-#back-button{
-    transform: scale(-1, 1);
-}
-#skip-button{
-    
-}
-
-#player{
+#track-container{
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 25px;
-    margin-bottom: 25px;
 }
-
-#controls{
-    /* width: 300px */
-}
-.selection-container{
-    /* display: flex; */
-}
-
-
-#player-ui{
-    /* margin-right: 50px; */
-}
-#playlist-select{
-    width: 400px;
-    margin-top: 50px;
-    margin-left: 20%;
-}
-#track-select{
-    width: 400px;
-    margin-top: 50px;
-    margin-left: 20%;
-
-}
-#selection-ui{
-    /* margin-left: 10%; */
-}
- #playground-selects{
-     /* margin-left: 30%;
-     margin-right: auto;
-     width: 100%; */
-
- }
- #player-console{
-    /* display: flex; */
- }
- .playground-container{
-
- }
- #track-selects{
-    /* margin-left: 30%; */
-    /* margin-right: auto; */
-    /* width: 100%; */
-
-}
-
-
 
