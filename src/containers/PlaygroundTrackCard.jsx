@@ -4,13 +4,14 @@ import "../stylesheets/PlaygroundTrackCard.css"
 import TrackInfo from "../components/TrackInfo"
 import PlayerUI from '../components/PlayerUI'
 import TrackArt from '../components/TrackArt'
+import Spectrum from '../components/Spectrum'
 export default function PlaygroundTrackCard({track}) {
     return (
        <div>
             <div id="track-container">
                 <TrackArt track={track}/>
                 <TrackInfo track={track}/>
-                <span><h1>Hellooo</h1></span>
+                <Spectrum track={track}/>
             </div>
             <EQUI/>
        </div>

@@ -22,8 +22,11 @@ input{
     color: black
 }
 
-#skip-button{
+#back-button{
     transform: scale(-1, 1);
+}
+#skip-button{
+    
 }
 
 #player{
@@ -47,12 +50,12 @@ input{
 #playlist-select{
     width: 400px;
     margin-top: 50px;
-    margin-left: 10%;
+    margin-left: 20%;
 }
 #track-select{
     width: 400px;
     margin-top: 50px;
-    margin-left: 10%;
+    margin-left: 20%;
 
 }
 #selection-ui{

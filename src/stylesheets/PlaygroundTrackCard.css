@@ -20,7 +20,12 @@
 #track-container{
     display:flex;
     justify-content: left;
-    margin-left: 10%;
+    margin-left: 20%;
     margin-top: 50px !important;
     margin-bottom: 50px !important;
+}
+
+#spectrum-container{
+    margin-left: 40px;
+
 }
