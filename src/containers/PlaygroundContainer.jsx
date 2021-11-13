@@ -7,6 +7,7 @@ import {useSelector} from "react-redux"
 import PlaylistSelect from "../components/PlaylistSelect"
 import TrackSelect from "../components/TrackSelect"
 import PlaygroundTrackCard from './PlaygroundTrackCard'
+import EQUI from '../components/EQUI'
 
 
 export default function PlaygroundContainer({dispatch, user}) {
@@ -26,6 +27,7 @@ export default function PlaygroundContainer({dispatch, user}) {
             await fetchPlaylists(dispatch, user)
             let elems = document.querySelectorAll('select');
             M.FormSelect.init(elems, {});
+            changeTrack()
         }
         fetchUserPlaylists()
     }, [user, dispatch])
@@ -47,12 +49,19 @@ export default function PlaygroundContainer({dispatch, user}) {
     }
  
         return (
-            <div className="container">
-                <h1>Welcome, let's start training</h1>
-                <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>
-                <br/>
-                {playlistSet ? <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
+            <div>
+            <span id="playground-header"><h1 className="center">Welcome, let's start training</h1></span>
+            {/* <div className="selection-container">
+               <div id="selection-ui" className="">
+                    <div id="playground-selects">
+                        <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>
+                        <br/>
+                        {playlistSet ? <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
+                    </div>
+               </div>
                 {currentTrack.id ? <PlaygroundTrackCard track={currentTrack}/> : <div></div> }
+            </div> */}
+            {/* <EQUI/> */}
             </div>
         )
 }

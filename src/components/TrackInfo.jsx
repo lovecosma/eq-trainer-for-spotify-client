@@ -5,8 +5,9 @@ export default function TrackInfo({track}) {
         <div className="track-info">
             <img src={track.album_art} width={250} height={250}/>
             <div className="track-details">
-                <p>{track.name}</p>
+                {/* <p>{track.name}</p>
                 <p>{track.artist}</p>
+                <p>{track.album_name}</p> */}
             </div>
         </div>  
     )

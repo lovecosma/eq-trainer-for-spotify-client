@@ -29,16 +29,44 @@ input{
 #player{
     display: flex;
     justify-content: space-evenly;
-    margin-left: auto;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 #controls{
-    margin-left: auto;
+    margin-left: 10%;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 20px;
+    width: 100%;
+}
+.selection-container{
+    display: flex;
+    justify-content: left;
 }
 
+#selection-ui{
+  width:40%
+}
+#player-ui{
+    margin-right: 50px;
+}
+#playlist-select{
+    width: 400px;
+    margin-top: 50px;
+}
+#track-select{
+    width: 400px;
+    margin-top: 50px;
+}
+#selection-ui{
+    margin-bottom: 50px;
+}
+ #playground-selects{
+     margin-left: 30%;
+     margin-right: auto;
+     width: 100%;
+
+ }
 
 
 

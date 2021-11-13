@@ -10,7 +10,7 @@ export default function TrackSelect({tracks, changeTrack}) {
     
     return (
 
-            <div class="input-field col s12">                   
+            <div id="track-select" className="input-field col s12">                   
             <select onChange={changeTrack}>
                 {!!tracks[0] ? <option value="" disabled selected>Choose your option</option> : <option value="" disabled selected>No options available for this playlist</option>}
                 {tracks.map(track => <option value={track.id}>{track.name}</option>)}

@@ -1,6 +1,6 @@
 #track-ui{
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 .eq-ui{
@@ -11,4 +11,8 @@
 .track-info{
     display: flex;
     justify-content: space-between;
+}
+
+#controls{
+    margin-left: 20%;
 }

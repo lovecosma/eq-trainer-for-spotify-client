@@ -10,7 +10,6 @@ export default function PlaygroundTrackCard({track}) {
                 <TrackInfo track={track}/>
                 <PlayerUI/>
            </div>
-            <EQUI/>
         </div>
     )
 }
