@@ -1,18 +1,26 @@
 #track-ui{
-    /* margin-left: auto;
-    margin-right: auto; */
+    
 }
 
 .eq-ui{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
-.track-info{
-    display: flex;
-    justify-content: space-between;
+#track-info{
+    margin-left: 40px;
 }
 
 #controls{
     margin-left: 20%;
+}
+
+#track-container{
+    display:flex;
+    justify-content: left;
+    margin-left: 10%;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
 }

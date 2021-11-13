@@ -4,7 +4,7 @@ export default function PlaylistSelect({playlists, changePlaylist}) {
     return (
         <div>   
             <div id="playlist-select" className="input-field col s12">
-                <select className="choose-option"onChange={changePlaylist} >
+                <select className="choose-option"onChange={ (e) => changePlaylist(Number(e.target.value))} >
                 <option value="" disabled selected>Choose your option</option>
                 {playlists.map(playlist => <option value={playlist.id}>{playlist.name}</option> )}
                 </select>

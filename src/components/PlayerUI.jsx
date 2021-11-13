@@ -5,12 +5,10 @@ import Spectrum from './Spectrum'
 
 export default function PlayerUI() {
     return (
-        <div className="player-ui" >
-            <div id="controls">
-                <img id="skip-button" src={skip} alt="back"/>
-                <img src={playButton2} width="100px" height="100px" alt="play button"/>
-                <img src={skip} alt="skip"/>
-            </div>
+        <div >
+            <img id="skip-button" src={skip} alt="back"/>
+            <img src={playButton2} width="40px" height="40px" alt="play button"/>
+            <img src={skip} alt="skip"/>
         </div>
     )
 }

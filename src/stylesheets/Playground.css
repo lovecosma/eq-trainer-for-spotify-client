@@ -34,39 +34,48 @@ input{
 }
 
 #controls{
-    margin-left: 10%;
-    margin-right: auto;
-    margin-top: 20px;
-    width: 100%;
+    /* width: 300px */
 }
 .selection-container{
-    display: flex;
-    justify-content: left;
+    /* display: flex; */
 }
 
-#selection-ui{
-  width:40%
-}
+
 #player-ui{
-    margin-right: 50px;
+    /* margin-right: 50px; */
 }
 #playlist-select{
     width: 400px;
     margin-top: 50px;
+    margin-left: 10%;
 }
 #track-select{
     width: 400px;
     margin-top: 50px;
+    margin-left: 10%;
+
 }
 #selection-ui{
-    margin-bottom: 50px;
+    /* margin-left: 10%; */
 }
  #playground-selects{
-     margin-left: 30%;
+     /* margin-left: 30%;
      margin-right: auto;
-     width: 100%;
+     width: 100%; */
 
  }
+ #player-console{
+    /* display: flex; */
+ }
+ .playground-container{
+
+ }
+ #track-selects{
+    /* margin-left: 30%; */
+    /* margin-right: auto; */
+    /* width: 100%; */
+
+}
 
 
 

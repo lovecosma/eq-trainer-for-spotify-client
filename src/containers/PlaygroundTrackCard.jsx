@@ -3,13 +3,16 @@ import EQUI from '../components/EQUI'
 import "../stylesheets/PlaygroundTrackCard.css"
 import TrackInfo from "../components/TrackInfo"
 import PlayerUI from '../components/PlayerUI'
+import TrackArt from '../components/TrackArt'
 export default function PlaygroundTrackCard({track}) {
     return (
-        <div id="track-ui">
-           <div id="player">
+       <div>
+            <div id="track-container">
+                <TrackArt track={track}/>
                 <TrackInfo track={track}/>
-                <PlayerUI/>
-           </div>
-        </div>
-    )
+                <span><h1>Hellooo</h1></span>
+            </div>
+            <EQUI/>
+       </div>
+   )
 }

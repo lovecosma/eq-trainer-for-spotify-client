@@ -26,21 +26,33 @@ export default function PlaygroundContainer({dispatch, user}) {
         const fetchUserPlaylists = async () => {
             await fetchPlaylists(dispatch, user)
             let elems = document.querySelectorAll('select');
-            M.FormSelect.init(elems, {});
-            changeTrack()
+            M.FormSelect.init(elems, {});  
+            // setRandomTrack()
         }
         fetchUserPlaylists()
     }, [user, dispatch])
 
-    const changePlaylist = async (e) => {
+    const changePlaylist = async (id) => {
         setCurrentTrack({})
         setPlaylistSet(false)
-      await fetchPlaylist(dispatch, e.target.value)
+      await fetchPlaylist(dispatch, id)
       setPlaylistSet(true)
     }
 
-    const changeTrack = (e) => {
-        fetch(`/api/tracks/${e.target.value}`)
+    // const setRandomTrack = async () => {
+    //    let randomPlaylistId = playlists[Math.floor(Math.random() * playlists.length)].id
+    //    await changePlaylist(randomPlaylistId)
+    //    if(!!tracks[0]){
+    //         let randomTrackId = tracks[Math.floor(Math.random() * tracks.length)].id
+    //         changeTrack(randomTrackId)
+    //    } else {
+    //       playlists =  playlists.filter(playlist => playlist.id !== Number(randomPlaylistId))
+    //        setRandomTrack()
+    //    }
+    // }
+
+    const changeTrack = (id) => {
+        fetch(`/api/tracks/${id}`)
         .then(resp => resp.json())
         .then(trackData => {
             setCurrentTrack({...trackData})
@@ -50,18 +62,14 @@ export default function PlaygroundContainer({dispatch, user}) {
  
         return (
             <div>
-            <span id="playground-header"><h1 className="center">Welcome, let's start training</h1></span>
-            {/* <div className="selection-container">
-               <div id="selection-ui" className="">
-                    <div id="playground-selects">
-                        <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>
-                        <br/>
-                        {playlistSet ? <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
+                <span id="playground-header"><h1 className="center">Welcome, let's start training</h1></span>
+                <div className="playground-container" > 
+                    <div id="selection-ui" >
+                            <PlaylistSelect playlists={playlists} changePlaylist={changePlaylist}/>
+                            {playlistSet ?  <TrackSelect tracks={tracks} changeTrack={changeTrack}/> : <div></div>}
                     </div>
-               </div>
-                {currentTrack.id ? <PlaygroundTrackCard track={currentTrack}/> : <div></div> }
-            </div> */}
-            {/* <EQUI/> */}
+                </div>
+                    {currentTrack.id ? <PlaygroundTrackCard track={currentTrack}/> : <div></div> }
             </div>
         )
 }
