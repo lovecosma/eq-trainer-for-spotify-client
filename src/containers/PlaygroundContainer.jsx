@@ -34,7 +34,6 @@ export default function PlaygroundContainer({dispatch, user}) {
     }, [user, dispatch])
     
     const changePlaylist = async (id) => {
-        setCurrentTrack({})
         setPlaylistSet(false)
         await fetchPlaylist(dispatch, id)
         setPlaylistSet(true)
