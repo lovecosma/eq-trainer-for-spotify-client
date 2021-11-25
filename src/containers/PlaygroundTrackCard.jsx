@@ -10,14 +10,12 @@ import * as Tone from "tone"
 
 export default function PlaygroundTrackCard({track}) {
 
-    const [fft, setFft] = useState(new Tone.FFT(1024));
+    const [fft, setFft] = useState(new Tone.FFT(2048));
     const [biquad, setBiquad] = useState(new Tone.BiquadFilter(200, 'lowpass'))
     const [playing, setPlaying] = useState(false)
     const [player, setPlayer] = useState(new Tone.Player(track.preview_url, () => {
         player.connect(biquad).connect(fft).toDestination()
     }))
-
-
 
     
     useEffect(() => { 
@@ -45,9 +43,8 @@ export default function PlaygroundTrackCard({track}) {
            <div id="track-container">
             <TrackArt track={track}/>
             <TrackInfo track={track} play={play} playing={playing} stop={stop}/>
+            <Spectrum playing={playing} fft={fft}/> 
             </div>
-            {/* <Spectrum playing={playing} fft={fft}/>  */}
-            <Visualizer audioPreviewUrl={track.preview_url} />
        </div>
    )
 }

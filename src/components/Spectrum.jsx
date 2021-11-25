@@ -11,8 +11,8 @@ export default function Spectrum({playing, fft}) {
         
     }
     const setup = (p5, canvasParentRef) => {
-        width = canvasParentRef.clientWidth * 0.90
-        p5.createCanvas(width, height).parent(canvasParentRef);
+        width = canvasParentRef.clientWidth
+        p5.createCanvas(700, height).parent(canvasParentRef);
         // p5.colorMode("HSB");
         // p5.angleMode("DEGREES");
     }
@@ -24,7 +24,7 @@ export default function Spectrum({playing, fft}) {
         p5.stroke(255)
         for(let i = 0; i < spectrum.length; i++){
             let amp = spectrum[i] 
-            let y = p5.map(amp, -200, 1, height*1.5, 0)
+            let y = p5.map(amp, -75, -25, height, 0)
             p5.line(i, height, i, y)
         }
        }
